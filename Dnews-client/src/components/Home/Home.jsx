@@ -1,12 +1,16 @@
-import styles from '../MAIN/MainPage.module.css'
-import cardPic from '../../assets/ns.jpg'
-import cardPic2 from '../../assets/asenVasilev.jpg'
-import cardPic3 from '../../assets/beer.jpg'
+import styles from '../Home/HomePage.module.css'
+
+import cardPic from '../../../public/assets/ns.jpg'
+import cardPic2 from '../../../public/assets/asenVasilev.jpg'
+import cardPic3 from '../../../public/assets/beer.jpg'
 
 
-export default function MainPage() {
 
-    return (
+export default function Home() {
+
+    return(
+        <>
+        
         <>
 
         <div className={styles['wrapper']}>
@@ -81,5 +85,6 @@ export default function MainPage() {
 
 </div>
 </>
-    )
+        </>
+    );
 }

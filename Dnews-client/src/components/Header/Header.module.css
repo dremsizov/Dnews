@@ -7,6 +7,15 @@
     background-color: rgb(104, 150, 150);
     
 }
+
+.newsLogo{
+    display: flex;
+}
+
+.logoText{
+    font-size: 3rem;
+    color: black;
+}
 .icons{
     display:flex;
     gap:2rem; 

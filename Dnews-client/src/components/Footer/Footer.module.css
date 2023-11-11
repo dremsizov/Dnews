@@ -4,8 +4,9 @@ footer{
     justify-content: space-around;
     background-color: rgb(104, 150, 150);
 }
+
 .logoPicture{
-    width: 60%;
+    width: 30%;
 }
 .sociaMedia i{
     gap: 1em;

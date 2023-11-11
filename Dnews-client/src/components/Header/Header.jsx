@@ -1,8 +1,10 @@
 
-import Navigation from "../Navigation/NavigationBar"
+import Navigation from './Navigation/NavigationBar'
 
-import newsLogo from '../../assets/loggo.png'
+import newsLogo from '../../../public/assets/logoMic.png'
 import styles from './Header.module.css'
+
+import { Link } from "react-router-dom"
 
 
 
@@ -15,9 +17,13 @@ export default function HeaderComponent() {
 
         <div className={styles['wrapper']}> 
         <div className={styles['newsLogo']}>
-        <a href="#" >
+        <Link to='/'>
           <img src={newsLogo} className={styles['logoPicture']} alt="React logo" />
-        </a>
+        </Link>
+        <Link to='/'>
+          <p className={styles['logoText']}>Твоите новини</p>
+        </Link>
+        
       </div>
       <div className={styles['icons']}>
 

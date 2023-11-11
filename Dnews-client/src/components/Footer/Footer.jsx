@@ -1,4 +1,4 @@
-import newsLogo from '../../assets/loggo.png'
+import newsLogo from '../../../public/assets/logoMic.png'
 import styles from './Footer.module.css'
 
 
@@ -31,7 +31,7 @@ export default function FooterComponent() {
   </div>
 
 </div>
-
+        <div className={styles['media']}>
         <div className={styles['newsLogo']}>
         <a href="www.facebook.com" >
           <img src={newsLogo} className={styles['logoPicture']} alt="React logo" />
@@ -43,6 +43,7 @@ export default function FooterComponent() {
 
         </div>
         </div>
+          </div>
 
       </footer>
     )
