@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom'
 
 export default function NavBar() {
     return (
-        <div>
+        <> 
+        
             <nav>
             <ul className={styles['navBar']}>
 
@@ -20,6 +21,8 @@ export default function NavBar() {
 
             </ul>
             </nav>
-        </div>
+            
+        </>
+        
     )
 }

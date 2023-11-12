@@ -1,16 +1,36 @@
-
-.navBar{
-    background-color: black;
-    color: white;
-    display: flex;
-    justify-content: space-around;
-    padding: 2em;
- 
-
+body {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
 }
 
-.navBar li{
-text-decoration: none;
-list-style: none;
-font-size: 2em;
+.navBar {
+  margin: 0px;
+  background-color: black;
+  display: flex;
+  justify-content: space-around;
+  padding: 2em;
+  list-style: none;
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+.navBar li {
+  text-decoration: none;
+  font-size: 1.3rem;
+  letter-spacing: 3px;
+  list-style: none;
+  box-sizing: border-box;
+  display: inline-block;
+  padding: 1rem 1rem;
+  color: white;
+  text-transform: uppercase;
+}
+
+.navBar a:hover {
+  color: red;
 }

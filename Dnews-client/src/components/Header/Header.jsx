@@ -7,14 +7,9 @@ import styles from './Header.module.css'
 import { Link } from "react-router-dom"
 
 
-
-
-
 export default function HeaderComponent() {
     return(
       <header>
-
-
         <div className={styles['wrapper']}> 
         <div className={styles['newsLogo']}>
         <Link to='/'>
@@ -33,11 +28,8 @@ export default function HeaderComponent() {
 
         <div className={styles['login1']}>
         
-          <i className="fa-solid fa-arrow-right-to-bracket"></i>
-        </div>
-
-        <div className={styles['login2']}>
-          <i className="fa-regular fa-address-card"></i>
+          <Link to="/login"><i className="fa-solid fa-arrow-right-to-bracket"></i>
+          </Link> 
         </div>
       </div>
 
