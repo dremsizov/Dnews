@@ -7,27 +7,39 @@ export default function Login() {
         <>
 
         <section className={styles['loginForm']}>
-        <h2 className={styles['title']}>Влез в своя профил</h2>
-            <form action="">
+
+            <div className={styles['wrapper']}>
+            
+            <form className={styles['formlog']} action="">
+                <h2>Влез в своя профил</h2>
+
                 <div className={styles['email']}>
-                <label htmlFor="name">Email</label>
-                <input type="text" />
+                    <input type="text" placeholder='email' required />
+                    <i className="fa-solid fa-at"></i>
                 </div>
+
                 <div className={styles['pass']}>
-                <label htmlFor="name">Password</label>
-                <input type="text" />
-                </div>
-                <div className={styles['signUp']}>
+                    <input type="password" placeholder='password' required />
+                    <i className="fa-solid fa-key"></i>
+                 </div>
+
                
-                <input type="button" value={'LOGIN'} />
-                </div>
+                 <div className={styles['signUp']}>
+                    <input type="submit" value={'Влез в профила си'}/>
+                 </div>
+
+
+               
+            
             </form>
+
+
+            </div>
+        
         </section>
 
-        <div className={styles['imgPen']}>
-        <img src="assets/logo.png" alt="pen" />
-
-        </div>
+        
+        
        
         
         </>

@@ -1,8 +1,113 @@
-.loginForm{
-    margin: 4rem;
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css");
+
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
 }
+
+.loginForm{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url('../../../public/assets/bacground1.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: auto;
+}
+
+.wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 45rem;
+}
+
+.wrapper h2{
+    font-size: 5rem;
+    text-align: center;
+}
+
+.wrapper .email{
+    width:100%;
+    height: 2rem;
+    margin: 4rem 0;
+    }
+.wrapper .pass{
+    width:100%;
+    height: 2rem;
+    margin: 4rem 0;
+    }
+
+.email input{
+    width: 100%;
+    height: 3rem;
+    border-radius: 4rem;
+}
+.pass input{
+    width: 100%;
+    height: 3rem;
+    border-radius: 4rem;
+}
+
+.email i {
+    position: absolute;
+    right: 33.1rem;
+    top: 36rem;
+    transform: translateY(-80%);
+    font-size: 2rem;
+}
+
+.pass i {
+    position: absolute;
+    right: 33.2rem;
+    top: 42.1rem;
+    transform: translateY(-80%);
+    font-size: 2rem;
+}
+
 
 .title{
     font-size: 3rem;
     font-style: italic;
 }
+
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+       
+}
+
+.formlog{
+    border: 3px solid black;
+    padding: 2rem 5rem;
+    }
+
+    .formlog h2{
+        font-size: 4rem;
+    }
+  
+    .signUp {
+     text-align: center;   
+    }
+    .signUp input{
+        width: 25rem;
+        height: 2rem;
+        padding: 3rem;
+        text-align: center;
+        font-size: 2rem
+    }
+
+
+
+ 
+

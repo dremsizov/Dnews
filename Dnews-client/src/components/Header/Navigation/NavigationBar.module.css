@@ -2,14 +2,24 @@ body {
   padding: 0px;
   margin: 0px;
   box-sizing: border-box;
+  }
+
+nav {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: black;
+  padding: 1em;
+  z-index: 1000; 
 }
+
 
 .navBar {
   margin: 0px;
-  background-color: black;
   display: flex;
+  /* background-color: black; */
   justify-content: space-around;
-  padding: 2em;
+  /* padding: 2em; */
   list-style: none;
   text-decoration: none;
 }
@@ -20,7 +30,7 @@ a {
 }
 
 .navBar li {
-  text-decoration: none;
+  /* text-decoration: none; */
   font-size: 1.3rem;
   letter-spacing: 3px;
   list-style: none;
@@ -34,3 +44,4 @@ a {
 .navBar a:hover {
   color: red;
 }
+
