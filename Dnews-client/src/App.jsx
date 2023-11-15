@@ -15,6 +15,7 @@ import Economics from './components/MainCategory/Economics/Economics';
 import Sport from './components/MainCategory/Sports/Sport';
 import Lifestyle from './components/MainCategory/Lifestyle/Lifestyle';
 import Analitics from './components/MainCategory/Analitic/Analitics';
+import Register from './components/Register/Register';
 
 
 
@@ -30,6 +31,7 @@ function App() {
 
   <Route path='/' element={<Home />} />
   <Route path='/login' element={<Login />} />
+  <Route path='/registerR' element={<Register />} />
   <Route path='/news' element={<AllNews />} /> 
   <Route path='/bg' element={<Bulgaria />} />
   <Route path='/world' element={<World />} />

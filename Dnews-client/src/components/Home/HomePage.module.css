@@ -10,8 +10,10 @@
 
 .newsCard{
  display: flex;
- padding-bottom: 2rem;
- margin-bottom: 2rem;
+ width: 100%;
+ height: 15rem;
+ overflow: hidden;
+margin-bottom: 2rem;
 }
 .newsCard:hover{
   border: 1px solid black;
@@ -19,7 +21,9 @@
 }
 
 .cardNewsImg img{
-  width: 70%;
+  width: 25rem;
+  height: 15rem;
+  object-fit: cover;
  
   
 }

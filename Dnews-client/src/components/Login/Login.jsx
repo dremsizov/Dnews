@@ -11,7 +11,7 @@ export default function Login() {
             <div className={styles['wrapper']}>
             
             <form className={styles['formlog']} action="">
-                <h2>Влез в своя профил</h2>
+                <h2 className={styles['title']}>Влез в своя профил</h2>
 
                 <div className={styles['email']}>
                     <input type="text" placeholder='email' required />

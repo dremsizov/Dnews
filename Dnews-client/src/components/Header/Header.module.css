@@ -11,6 +11,7 @@
 
 .newsLogo {
   display: flex;
+  align-items: center;
 }
 
 .logoText {
@@ -70,7 +71,7 @@
 }
 
 .newsLogo:hover .logoPicture {
-  transform: translateX(270%);
+  transform: translateX(370%);
 }
 
 .newsLogo:hover .logoText {

@@ -6,6 +6,9 @@ import styles from './Footer.module.css'
 export default function FooterComponent() {
     return(
       <footer>
+        <section className={styles['optionSection']}>
+
+
 <div className={styles['footerTeam']}>
   <h2>Екип</h2>
  <p>Репортери</p>
@@ -44,7 +47,8 @@ export default function FooterComponent() {
         </div>
         </div>
           </div>
-
+        </section>
+<p className={styles['author']}>Viktor Dremsizov, React 2023</p>
       </footer>
     )
 }

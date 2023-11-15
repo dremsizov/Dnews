@@ -1,8 +1,9 @@
 
-footer{
+.optionSection{
     display: flex;
     justify-content: space-around;
     background-color: rgb(104, 150, 150);
+    padding: 1.5rem;
 }
 
 .logoPicture{
@@ -23,4 +24,14 @@ footer{
 }
 .btnMail{
     font-size: 1.2em;
+}
+
+.author{
+    background-color: black;
+    color: white;
+    text-align: center;
+    font-size: 1.5rem;
+    font-style: italic;
+    font-weight: none;
+    padding: 0.5rem;
 }
