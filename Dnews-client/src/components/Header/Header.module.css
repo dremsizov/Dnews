@@ -82,3 +82,9 @@
   position: relative;
   right: 25%;
 }
+
+.searchBTN i, .login i, .create i, .logout i{
+font-size: 2rem;
+color: black;
+cursor: pointer;
+}

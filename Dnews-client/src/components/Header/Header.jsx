@@ -29,11 +29,24 @@ export default function HeaderComponent() {
             <i className="fa-solid fa-magnifying-glass"></i>
           </div>
 
-          <div className={styles["login1"]}>
+          <div className={styles["login"]}>
             <Link to="/login">
-              <i className="fa-solid fa-arrow-right-to-bracket"></i>
+            <i className="fa-solid fa-user-check"></i>
             </Link>
           </div>
+
+            <div className={styles["create"]}>
+            <Link to="/create">
+            <i className="fa-solid fa-plus"></i>
+            </Link>
+          </div>
+          <div className={styles["logout"]}>
+            <Link to="/logout">
+            <i className="fa-solid fa-arrow-right-from-bracket"></i>
+            </Link>
+          </div>
+
+          
         </div>
       </div>
       <Navigation />
