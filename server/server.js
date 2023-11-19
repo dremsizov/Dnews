@@ -1314,6 +1314,7 @@
         }
     }
 
+    // USER DATA INFO
     var rules = initPlugin$3;
 
     var identity = "email";
@@ -1338,6 +1339,8 @@
     	sessions: {
     	}
     };
+
+    // DATA info
     var seedData = {
     	recipes: {
     		"3987279d-0ad4-4afb-8ca9-5b256ae3b298": {
