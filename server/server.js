@@ -1321,8 +1321,11 @@
     var protectedData = {
     	users: {
     		"35c62d76-8152-4626-8712-eeb96381bea8": {
+                _id: "56f5afa44f5a-f45a4f5a4fa-fa4f5a4f5a",
     			email: "peter@abv.bg",
-    			username: "Peter",
+                firstName: "Peter",
+                lastName: 'Ivanov',
+    			username: "peter",
     			hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1"
     		},
     		"847ec027-f659-4086-8032-5173e2f9c93a": {
@@ -1340,8 +1343,30 @@
     	}
     };
 
-    // DATA info
+    /////////////////////////////////// DATA info from ME
     var seedData = {
+
+
+            // add from me 
+            writers: {
+                "144a45fa-agfa45a4ga-aga": {
+                  firstName: "Peter",
+                  lastName: "Petrov",
+                  _id: "35c62d76-8152-4626-8712-eeb96381bea8",
+                  type: "writer",
+                  
+                }
+              },
+
+
+
+
+
+
+
+
+
+
     	recipes: {
     		"3987279d-0ad4-4afb-8ca9-5b256ae3b298": {
     			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
@@ -1661,6 +1686,13 @@
     		}
     	}
     };
+
+
+
+
+
+
+    
     var rules$1 = {
     	users: {
     		".create": false,

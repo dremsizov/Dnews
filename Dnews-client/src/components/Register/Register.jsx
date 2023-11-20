@@ -1,5 +1,5 @@
-import { useState } from "react";
 import styles from "../Register/Register.module.css";
+import { useState } from "react";
 
 const regFormInitialState = {
   firstName: "",
@@ -15,27 +15,32 @@ export default function Register() {
   const [formRegValues, setFormRegValues] = useState(regFormInitialState);
   const [errors, setErrors] = useState({});
 
+
   const changeHandler = (e) => {
-    setFormRegValues((state) => ({
+    setFormRegValues(state => ({
       ...state,
       [e.target.name]: e.target.value,
     }));
   };
 
-  const resetRegRormHandler = () => {
+  const resetRegFormHandler = () => {
     setFormRegValues(regFormInitialState);
+    setErrors({})
   };
 
-  const formSubmitHandler = () => {
+  const formSubmitHandler = (e) => {
+    e.preventDefault();
     console.log(formRegValues);
-    resetRegRormHandler();
+    resetRegFormHandler();
   };
+
+  /////////////////////////////////////////////////////// FIRST NAME VALIDATOR  //////////////////////////////////////////////////////
 
   const firstNameValidator = () => {
     if (formRegValues.firstName.length < 2) {
       setErrors(state => ({
         ...state,
-        firstName: "Собственото име трябва да е повече от 2 символа",
+        firstName: "Собственото име трябва да е повече от 2 символа!",
       }));
     } else {
       if (errors.firstName) {
@@ -47,11 +52,89 @@ export default function Register() {
     }
   };
 
+
+
+  ///////////////////////////////////////////// LASTNAME VALIDATOR
+
+  const lastNameValidator = () => {
+    if (formRegValues.lastName.length < 2) {
+      setErrors(state => ({
+        ...state,
+        lastName: "Фамилията име трябва да е повече от 2 символа!",
+      }));
+    } else {
+      if (errors.lastName) {
+        setErrors(state => ({
+          ...state,
+          lastName: "",
+        }));
+      }
+    }
+  };
+
+    ////////////////////////////// USERNAME VALIDATOR //////////////////////////////////////////////////////
+
+    const userNameValidator = () => {
+      if (formRegValues.username.length < 4) {
+        setErrors(state => ({
+          ...state,
+          username: "Потребителското име трябва да е повече от 4 символа!",
+        }));
+      } else {
+        if (errors.username) {
+          setErrors(state => ({
+            ...state,
+            username: "",
+          }));
+        }
+      }
+    };
+    
+
+    ////////////////////////// PASSWORD VALIDATOR //////////////////////////////////////////////////////
+
+    const passwordValidator = () => {
+      if(formRegValues.password.length<5){
+        setErrors(state => ({
+          ...state,
+          password: 'Вашата парола трябва да бъде минимум 6 символа!'
+        }));
+      } else{
+        if(errors.password){
+          setErrors(state => ({
+            ...state,
+            password: ''
+          }));
+        }
+      }
+    }
+
+
+    /////////////////////////////////// REPASS VALIDATOR //////////////////////////////////////////////////////
+
+    const repassValidator = () => {
+      if(formRegValues.password != formRegValues.repass) {
+        setErrors(state => ({
+          ...state,
+          repass: 'Посочената парола не съвпада!'
+        }));
+      } else{
+        if(errors.repass){
+          setErrors(state =>({
+            ...state,
+            repass: ''
+          }))
+        }
+      }
+    }
+
+
   return (
     <>
       <section className={styles["regForm"]}>
         <div className={styles["wrapper"]}>
-          <form>
+          <form onSubmit={formSubmitHandler}>
+           
             <h2 className={styles["title"]}>Регистрация</h2>
 
             <div className={styles["regContent"]}>
@@ -82,8 +165,13 @@ export default function Register() {
                   id="lastName"
                   value={formRegValues.lastName}
                   onChange={changeHandler}
+                  onBlur={lastNameValidator}
                   required
+                  className={errors.lastName && styles.errorInput}
                 />
+                {errors.lastName && (
+                  <p className={styles.errorMessage}>{errors.lastName}</p>
+                )}
               </div>
 
               <div className={styles["inputBox"]}>
@@ -96,7 +184,10 @@ export default function Register() {
                   onChange={changeHandler}
                   id="email"
                   required
+                  
                 />
+
+
               </div>
 
               <div className={styles["inputBox"]}>
@@ -107,9 +198,14 @@ export default function Register() {
                   name="username"
                   value={formRegValues.username}
                   onChange={changeHandler}
+                  onBlur={userNameValidator}
                   id="username"
                   required
+                  className={errors.username && styles.errorInput}
                 />
+                  {errors.username && (
+                  <p className={styles.errorMessage}>{errors.username}</p>
+                )}
               </div>
 
               <div className={styles["inputBox"]}>
@@ -120,9 +216,14 @@ export default function Register() {
                   name="password"
                   value={formRegValues.password}
                   onChange={changeHandler}
+                  onBlur={passwordValidator}
                   id="password"
                   required
+                  className={errors.password && styles.errorInput}
                 />
+               {errors.password && (
+                  <p className={styles.errorMessage}>{errors.password}</p>
+                )}
               </div>
 
               <div className={styles["inputBox"]}>
@@ -133,9 +234,14 @@ export default function Register() {
                   name="repass"
                   value={formRegValues.repass}
                   onChange={changeHandler}
+                  onBlur={repassValidator}
                   id="repass"
                   required
+                  className={errors.repass && styles.errorInput}
                 />
+                {errors.repass && (
+                  <p className={styles.errorMessage}>{errors.repass}</p>
+                )}
               </div>
 
               <div className={styles["userOption"]}>
@@ -156,7 +262,9 @@ export default function Register() {
 
               <div className={styles["regBtn-container"]}>
                 {/* <input type="submit" value="Регистрирай се" /> */}
-                <button type="button" onClick={formSubmitHandler}>
+                <button type="submit"
+                    disabled={(Object.values(errors).some(x => x)
+                      || (Object.values(formRegValues).some(x => x == '')))}>
                   Регистрирай се
                 </button>
               </div>
