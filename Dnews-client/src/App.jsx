@@ -16,13 +16,23 @@ import Sport from './components/MainCategory/Sports/Sport';
 import Lifestyle from './components/MainCategory/Lifestyle/Lifestyle';
 import Analitics from './components/MainCategory/Analitic/Analitics';
 import Register from './components/Register/Register';
+import { useState } from 'react';
+import AuthContext from './contexts/authContext';
 
 
 
 function App() {
  
+  const[auth, setAuth] = useState({});
+
+
+  const loginSubmitHandler = (values) => {
+
+    console.log(values);
+  }
 
   return (
+    <AuthContext.Provider value={{loginSubmitHandler}}>
     <>
     <div>
     <HeaderComponent />
@@ -53,6 +63,7 @@ function App() {
       
 
     </>
+   </AuthContext.Provider>
   )
 }
 

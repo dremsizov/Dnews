@@ -5,10 +5,12 @@ import cardPic2 from "../../../public/assets/asenVasilev.jpg";
 import cardPic3 from "../../../public/assets/beer.jpg";
 import cardPic4 from "../../../public/assets/borisov.jpg";
 import cardPic5 from "../../../public/assets/carCrash.jpg";
+import SliderCard from "../SliderCard/SliderCard";
 
 export default function Home() {
   return (
     <>
+    <SliderCard />
       <div className={styles["wrapper"]}>
         <section className={styles["newsContainter"]}>
           <article className={styles["newsCard"]}>
