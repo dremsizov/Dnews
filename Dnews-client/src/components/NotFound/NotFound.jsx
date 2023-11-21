@@ -1,7 +1,12 @@
+import styles from '../NotFound/NotFound.module.css'
+
 export default function NotFound(){
     return(
         <>
-        <h1>Sorry,the Page is not found</h1>
+        <div className={styles['image']}>
+
+        <img src="assets/not_found_page.png" alt="" />
+        </div>
         </>
     );
 
