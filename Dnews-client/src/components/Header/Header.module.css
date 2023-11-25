@@ -83,7 +83,7 @@
   right: 25%;
 }
 
-.searchBTN i, .login i, .create i, .logout i{
+.searchBTN i, .login i, .create i, .logout i, .profile i{
 font-size: 2rem;
 color: black;
 cursor: pointer;

@@ -11,6 +11,7 @@ export default function Home() {
   return (
     <>
     <SliderCard />
+    
       <div className={styles["wrapper"]}>
         <section className={styles["newsContainter"]}>
           <article className={styles["newsCard"]}>

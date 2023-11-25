@@ -1,32 +1,39 @@
+import * as newsService from "../../../services/newsService";
+import styles from '../AllNews/AllNews.module.css'
+
+
 import { useState, useEffect } from "react";
+import NewsItem from "../../NewsItem/NewsItem";
 
-
-
-const base_url='https://swapi.dev/api';
 
 export default function AllNews() {
 
-    const [AllCharacters, setCharacters] = useState([]);
+    const [allNews,setAllNews] = useState([]);
 
-useEffect(() => {
-    fetch(`${base_url}/people`)
-    .then(res => res.json())
-    .then(data => {
-        setCharacters(data.results) 
-    })
-},[]);
+
+    useEffect(() => {
+        newsService.getAll()
+       .then(result =>setAllNews(result))
+       .catch(error => console.log(error));
+
+    }, []);
+
+    const reversedNews = [...allNews].reverse();
 
     return(
         <>
-      <h2> Следи новините! Всеки час, за да знаеш, за да си информиран, за да си независим!</h2>
-      <ul>
+        <div className={styles.catalogContainer}>
 
-            {AllCharacters.map(character => 
-                <li key={character.name}>{character.name}</li>
-                
-                )}
-                </ul>
-            
+      <h2> Следи новините! Всеки час, за да знаеш, за да си информиран, за да си независим!</h2>
+     
+        <div>
+            {reversedNews.map(newscard =>(
+                <NewsItem 
+                {...newscard}
+                />
+                ))}
+        </div>
+                </div>
             </>
         
         
