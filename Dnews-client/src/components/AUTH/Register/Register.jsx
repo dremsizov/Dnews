@@ -1,5 +1,9 @@
-import styles from "../Register/Register.module.css";
-import { useState } from "react";
+import styles from "../../AUTH/Register/Register.module.css";
+import { useNavigate } from 'react-router-dom';
+import { useState, useContext,useEffect,useRef } from "react";
+
+import { AuthContext } from "../../../contexts/AuthContext";
+import * as authApi from '../../../services/userService'
 
 const regFormInitialState = {
   firstName: "",
@@ -8,12 +12,31 @@ const regFormInitialState = {
   username: "",
   password: "",
   repass: "",
-  userOprion: "",
+  // userOprion: "",
 };
 
 export default function Register() {
+  const navigate = useNavigate();
+
+  const {auth, setAuth} = useContext(AuthContext);
+
+  const isMountedRef = useRef(false)
+
   const [formRegValues, setFormRegValues] = useState(regFormInitialState);
   const [errors, setErrors] = useState({});
+
+  const [hasServerError, setHasServerError] = useState(false);
+  const [serverError, setServerError] = useState({});
+
+
+  useEffect(() => {
+    if (!isMountedRef.current) {
+      isMountedRef.current = true;
+      return;
+    }
+
+    console.log('Формулярът е актуализиран');
+  }, [formRegValues]);
 
 
   const changeHandler = (e) => {
@@ -23,6 +46,8 @@ export default function Register() {
     }));
   };
 
+
+
   const resetRegFormHandler = () => {
     setFormRegValues(regFormInitialState);
     setErrors({})
@@ -31,6 +56,18 @@ export default function Register() {
   const formSubmitHandler = (e) => {
     e.preventDefault();
     console.log(formRegValues);
+
+    authApi.register(formRegValues)
+    .then(user => {
+      setAuth(user)
+      navigate('/news')
+      })
+      .catch(error => {
+        setHasServerError(true);
+        setServerError(error.message);
+      })
+
+
     resetRegFormHandler();
   };
 
@@ -54,7 +91,7 @@ export default function Register() {
 
 
 
-  ///////////////////////////////////////////// LASTNAME VALIDATOR
+  ///////////////////////////////////////////// LASTNAME VALIDATOR ////////////////////////////////////////////////////////
 
   const lastNameValidator = () => {
     if (formRegValues.lastName.length < 2) {
@@ -94,7 +131,7 @@ export default function Register() {
     ////////////////////////// PASSWORD VALIDATOR //////////////////////////////////////////////////////
 
     const passwordValidator = () => {
-      if(formRegValues.password.length<5){
+      if(formRegValues.password.length<6){
         setErrors(state => ({
           ...state,
           password: 'Вашата парола трябва да бъде минимум 6 символа!'
@@ -128,14 +165,38 @@ export default function Register() {
       }
     }
 
+    // /////////////////////////////////// EMAIl Validator //////////////////////////
+
+    function emailIsValid(email){
+      const regexEmail = /^[a-zA-Z]+@[a-zA-Z]+\.[a-zA-Z]+$/;
+      return regexEmail.test(email)
+    }
+
+    const emailValidator = () => {
+      if(!emailIsValid(formRegValues.email)){
+        setErrors(state => ({
+          ...state,
+          email: 'Посоченият от вас мейл адрес не е във валиден формат',
+        }))
+      }
+      else{
+        if(errors.email) {
+          setErrors(state => ({
+            ...state,
+            email: ''
+          }));
+        }
+      }
+
+    }
 
   return (
     <>
       <section className={styles["regForm"]}>
         <div className={styles["wrapper"]}>
-          <form onSubmit={formSubmitHandler}>
+          <form method='POST' onSubmit={formSubmitHandler}>
            
-            <h2 className={styles["title"]}>Регистрация</h2>
+            <h2  className={styles["title"]}>Регистрация</h2>
 
             <div className={styles["regContent"]}>
               <div className={styles["inputBox"]}>
@@ -182,10 +243,14 @@ export default function Register() {
                   name="email"
                   value={formRegValues.email}
                   onChange={changeHandler}
+                  onBlur={emailValidator}
                   id="email"
                   required
                   
                 />
+                 {errors.email && (
+                  <p className={styles.errorMessage}>{errors.email}</p>
+                )}
 
 
               </div>
@@ -244,7 +309,8 @@ export default function Register() {
                 )}
               </div>
 
-              <div className={styles["userOption"]}>
+{/* USERS Options */}
+              {/* <div className={styles["userOption"]}>
                 <label htmlFor="userOption" id="userOption">
                   Потребителски права
                 </label>
@@ -258,15 +324,20 @@ export default function Register() {
                   <option value="admin">Администратор</option>
                   <option value="writer">Редактор</option>
                 </select>
-              </div>
+              </div> */}
 
               <div className={styles["regBtn-container"]}>
-                {/* <input type="submit" value="Регистрирай се" /> */}
+                
                 <button type="submit"
                     disabled={(Object.values(errors).some(x => x)
                       || (Object.values(formRegValues).some(x => x == '')))}>
                   Регистрирай се
                 </button>
+
+                {hasServerError && (
+                    <p className={styles.serverError}>{serverError}</p>
+                  )}
+
               </div>
             </div>
           </form>

@@ -1,70 +1,58 @@
+import Modal from "react-modal";
+import { Routes, Route } from "react-router-dom";
+import { AuthProvider } from "./contexts/AuthContext";
 
-import FooterComponent from './components/Footer/Footer';
-import HeaderComponent from './components/Header/Header';
-import Home from './components/Home/Home';
-import Login from './components/Login/Login';
+Modal.setAppElement("#root");
 
+import HeaderComponent from "./components/Header/Header";
+import FooterComponent from "./components/Footer/Footer";
+import Home from "./components/Home/Home";
+import Login from "./components/AUTH/Login/Login";
 
-import {Routes, Route} from 'react-router-dom';
-import NotFound from './components/NotFound/NotFound';
-import AllNews from './components/MainCategory/AllNews/AllNews';
-import Bulgaria from './components/MainCategory/Bulgaria/Bulgaria';
-import World from './components/MainCategory/World/world';
-import Politics from './components/MainCategory/Politics/Politics';
-import Economics from './components/MainCategory/Economics/Economics';
-import Sport from './components/MainCategory/Sports/Sport';
-import Lifestyle from './components/MainCategory/Lifestyle/Lifestyle';
-import Analitics from './components/MainCategory/Analitic/Analitics';
-import Register from './components/Register/Register';
-import { useState } from 'react';
-import AuthContext from './contexts/authContext';
+import NotFound from "./components/NotFound/NotFound";
+import AllNews from "./components/MainCategory/AllNews/AllNews";
+import Bulgaria from "./components/MainCategory/Bulgaria/Bulgaria";
+import World from "./components/MainCategory/World/world";
+import Politics from "./components/MainCategory/Politics/Politics";
+import Economics from "./components/MainCategory/Economics/Economics";
+import Sport from "./components/MainCategory/Sports/Sport";
+import Lifestyle from "./components/MainCategory/Lifestyle/Lifestyle";
+import Analitics from "./components/MainCategory/Analitic/Analitics";
+import Register from "./components/AUTH/Register/Register";
 
-
+import CreateNews from "./components/NEWS/CREATE-NEWS/CreateNews";
+import Profile from "./components/AUTH/Profile/Profile";
 
 function App() {
- 
-  const[auth, setAuth] = useState({});
-
-
-  const loginSubmitHandler = (values) => {
-
-    console.log(values);
-  }
-
   return (
-    <AuthContext.Provider value={{loginSubmitHandler}}>
-    <>
-    <div>
-    <HeaderComponent />
+    <AuthProvider>
+      <HeaderComponent />
 
-<Routes>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/profile" element={<Profile />} />
 
-  <Route path='/' element={<Home />} />
-  <Route path='/login' element={<Login />} />
-  <Route path='/registerR' element={<Register />} />
-  <Route path='/news' element={<AllNews />} /> 
-  <Route path='/bg' element={<Bulgaria />} />
-  <Route path='/world' element={<World />} />
-  <Route path='/politics' element={<Politics />} />
+        <Route path="/news" element={<AllNews />} />
 
-  <Route path='/economic' element={<Economics />} />
-  <Route path='/sport' element={<Sport />} />
-  <Route path='/lifestyle' element={<Lifestyle />} />
-  <Route path='/analitics' element={<Analitics />} />
+        <Route path="/createNews" element={<CreateNews />} />
 
-  <Route path='*' element={<NotFound />} />
+        <Route path="/bg" element={<Bulgaria />} />
+        <Route path="/world" element={<World />} />
+        <Route path="/politics" element={<Politics />} />
 
-</Routes>
+        <Route path="/economic" element={<Economics />} />
+        <Route path="/sport" element={<Sport />} />
+        <Route path="/lifestyle" element={<Lifestyle />} />
+        <Route path="/analitics" element={<Analitics />} />
 
+        <Route path="*" element={<NotFound />} />
+      </Routes>
 
-
-    <FooterComponent />
-    </div>
-      
-
-    </>
-   </AuthContext.Provider>
-  )
+      <FooterComponent />
+    </AuthProvider>
+  );
 }
 
-export default App
+export default App;
