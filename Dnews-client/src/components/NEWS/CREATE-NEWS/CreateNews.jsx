@@ -12,7 +12,7 @@ const formCreateInitialState = {
   title: "",
   newsInfo: "",
   image: "",
-  category: "политика", // Стартова категория
+  category: "", // Стартова категория
 };
 
 export default function CreateNews() {
@@ -115,9 +115,9 @@ export default function CreateNews() {
                   <input
                     type="radio"
                     name="category"
-                    value="българия"
+                    value="България"
                     id="bg"
-                    checked={formCreateValues.category === "българия"}
+                    checked={formCreateValues.category === "България"}
                     onChange={handleChange}
                   />
                   България
@@ -129,9 +129,9 @@ export default function CreateNews() {
                   <input
                     type="radio"
                     name="category"
-                    value="свят"
+                    value="Свят"
                     id="world"
-                    checked={formCreateValues.category === "свят"}
+                    checked={formCreateValues.category === "Свят"}
                     onChange={handleChange}
                   />
                   Свят
@@ -143,9 +143,9 @@ export default function CreateNews() {
                   <input
                     type="radio"
                     name="category"
-                    value="политика"
+                    value="Политика"
                     id="politics"
-                    checked={formCreateValues.category === "политика"}
+                    checked={formCreateValues.category === "Политика"}
                     onChange={handleChange}
                   />
                   Политика
@@ -157,9 +157,9 @@ export default function CreateNews() {
                   <input
                     type="radio"
                     name="category"
-                    value="икономика"
+                    value="Икономика"
                     id="economy"
-                    checked={formCreateValues.category === "икономика"}
+                    checked={formCreateValues.category === "Икономика"}
                     onChange={handleChange}
                   />
                   Икономика
@@ -171,9 +171,9 @@ export default function CreateNews() {
                   <input
                     type="radio"
                     name="category"
-                    value="спорт"
+                    value="Спорт"
                     id="sport"
-                    checked={formCreateValues.category === "спорт"}
+                    checked={formCreateValues.category === "Спорт"}
                     onChange={handleChange}
                   />
                   Спорт
@@ -185,9 +185,9 @@ export default function CreateNews() {
                   <input
                     type="radio"
                     name="category"
-                    value="любопитно"
+                    value="Любопитно"
                     id="lifestyle"
-                    checked={formCreateValues.category === "любопитно"}
+                    checked={formCreateValues.category === "Любопитно"}
                     onChange={handleChange}
                   />
                   Любопитно
@@ -199,9 +199,9 @@ export default function CreateNews() {
                   <input
                     type="radio"
                     name="category"
-                    value="анализи"
+                    value="Анализи"
                     id="analitic"
-                    checked={formCreateValues.category === "анализи"}
+                    checked={formCreateValues.category === "Анализи"}
                     onChange={handleChange}
                   />
                   Анализи

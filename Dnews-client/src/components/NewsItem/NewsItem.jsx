@@ -1,12 +1,14 @@
+import { Link } from 'react-router-dom'
 import styles from '../NewsItem/NewsItem.module.css'
 import formatData from '../utils/formatDataUtils'
 
 export default function NewsItem({
     title,
     newsInfo,
-    type,
     image,
     _createdOn,
+    category,
+    _id
 
 }){
     return (
@@ -21,9 +23,13 @@ export default function NewsItem({
         <img src={image} alt="" />
         <div className={styles['newsInfo']}>
             <h3>{title}</h3>
-            <p className={styles['newsDate']}>{formatData(_createdOn)}</p>
+            <p className={styles['newsDate']}>{formatData(_createdOn)}/ {category}</p>
             <p className={styles['newsText']}>{newsInfo}</p>
+            <button className={styles.readMoreBtn}>
+            <Link to={`/details/${_id}`}>Прочети повече</Link>
+        </button>
         </div>
+        
             </div>
         </article>
 

@@ -22,6 +22,9 @@ import Register from "./components/AUTH/Register/Register";
 
 import CreateNews from "./components/NEWS/CREATE-NEWS/CreateNews";
 import Profile from "./components/AUTH/Profile/Profile";
+import NewsDetails from "./components/NEWS/News_Details/NewsDetails";
+
+
 
 function App() {
   return (
@@ -46,6 +49,9 @@ function App() {
         <Route path="/sport" element={<Sport />} />
         <Route path="/lifestyle" element={<Lifestyle />} />
         <Route path="/analitics" element={<Analitics />} />
+
+
+        <Route path='/details/:newsID' element={<NewsDetails />} />
 
         <Route path="*" element={<NotFound />} />
       </Routes>

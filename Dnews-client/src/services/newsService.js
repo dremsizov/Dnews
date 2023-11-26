@@ -43,6 +43,17 @@ export const editNews = async (newsID, newsData) => {
     return result
 }
 
+// GET ONE NEWS//////////////
+
+export const getOneNews = async (newsID) => {
+    const result = await request.get(`${apiURL}/${newsID}`);
+
+    return result;
+};
+
+
+
+
 //////////////////////////////// Get Author NEWS ////////////////////
 
 export const getOwnerNews = async (userID) => {
@@ -50,3 +61,15 @@ export const getOwnerNews = async (userID) => {
     return result
 }
 
+
+
+////////////////////////////////////////// GET Category /////////////////////////////////////////////
+
+export const getAllAnalitics = async () => {
+    const categoryAnalitics = 'Aнализи'
+    const itemQuery = new URLSearchParams({
+        where: `category="${categoryAnalitics}"`,
+    });
+    const result = await request.get(`${apiURL}?${itemQuery}`);
+    return Object.values(result)
+}

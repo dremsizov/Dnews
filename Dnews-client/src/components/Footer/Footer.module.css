@@ -6,12 +6,17 @@
     padding: 1.5rem;
 }
 
+.optionSection h2{
+    font-size: 1.6rem;
+    display: flex;
+}
+
 .logoPicture{
     width: 30%;
 }
 .sociaMedia i{
     gap: 1em;
-    font-size: 3em;
+    font-size: 2em;
     width: 2em;
 }
 .mail{
@@ -30,7 +35,7 @@
     background-color: black;
     color: white;
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-style: italic;
     font-weight: none;
     padding: 0.5rem;
