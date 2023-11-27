@@ -25,6 +25,10 @@ import Profile from "./components/AUTH/Profile/Profile";
 import NewsDetails from "./components/NEWS/News_Details/NewsDetails";
 
 
+import TestFeed from "./components/TestFeed/TestFeed"
+import AuthGuard from "./components/GUARDS/AuthGuard";
+
+
 
 function App() {
   return (
@@ -38,13 +42,13 @@ function App() {
         <Route path="/profile" element={<Profile />} />
 
         <Route path="/news" element={<AllNews />} />
-
-        <Route path="/createNews" element={<CreateNews />} />
-
+        <Route path="/createNews" element={ <CreateNews />  } />
+        {/* <Route path="/createNews" element={<AuthGuard> <CreateNews /> </AuthGuard>} /> */}
         <Route path="/bg" element={<Bulgaria />} />
         <Route path="/world" element={<World />} />
         <Route path="/politics" element={<Politics />} />
-
+       
+        
         <Route path="/economic" element={<Economics />} />
         <Route path="/sport" element={<Sport />} />
         <Route path="/lifestyle" element={<Lifestyle />} />
@@ -53,7 +57,22 @@ function App() {
 
         <Route path='/details/:newsID' element={<NewsDetails />} />
 
+
+   
+
+
+
+        <Route path='/test' element={<TestFeed />} />
+
+   {/* GUARDSSSSS */}
+
+      {/* <Route element ={<AuthGuard />}>
+          <Route path="/createNews" element={ <CreateNews /> } />
+      </Route> */}
+
         <Route path="*" element={<NotFound />} />
+
+
       </Routes>
 
       <FooterComponent />

@@ -9,7 +9,6 @@ import SliderCard from "../SliderCard/SliderCard";
 
 
 
-
 export default function Home() {
 
 
@@ -24,13 +23,21 @@ export default function Home() {
     }, []);
 
     const reversedNews = [...allNews].reverse();
-
+    
 
   return (
-    <>
-    <SliderCard />
+    
+   
     
     <>
+     <div className={styles.newsContainer}>
+            {reversedNews.map(newscard =>(
+                <SliderCard 
+                {...newscard}
+                />
+                ))}
+        </div>
+
     <div className={styles.newsContainer}>
             {reversedNews.map(newscard =>(
                 <HomeNewsCard 
@@ -42,6 +49,6 @@ export default function Home() {
        
         
       
-    </>
+    
   );
 }

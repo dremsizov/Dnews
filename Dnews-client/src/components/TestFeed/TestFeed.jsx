@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import styles from '../SliderCard/SliderCard.module.css';
+import styles from '../TestFeed/TestFeed.module.css';
 
 export default function Carousel() {
   const [images, setImages] = useState([]);
@@ -68,92 +68,4 @@ export default function Carousel() {
   );
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import styles from '../SliderCard/SliderCard.module.css'
-// import { useEffect } from "react";
-
-
-// export default function SliderCard({
-//     image,
-    
-// }){
-
-//     useEffect(() => {
-//         var counter = 1;
-//         const intervalId = setInterval(function () {
-//           document.getElementById('radio' + counter).checked = true;
-//           counter++;
-//           if (counter > 4) {
-//             counter = 1;
-//           }
-//         }, 5000);
-    
-        
-//         return () => clearInterval(intervalId);
-//       }, []); 
-
-      
-//     return(
-//         <>
-//         <selection className={styles.section}>
-//             <div className={styles.slider}>
-//                 <div className={styles.slide}>
-//                 <input type="radio" name='radio-btn' id='radio1' />
-//                 <input type="radio" name='radio-btn' id='radio2' />
-//                 <input type="radio" name='radio-btn' id='radio3' /><input type="radio" name='radio-btn' id='radio4' />
-//                     <div className={styles['st first']}>
-//                         <img src={image} alt="" />
-//                     </div>
-//                     <div className={styles.st}>
-//                         <img src={image} alt="" />
-//                     </div>
-//                     <div className={styles.st}>
-//                         <img src={image} alt="" />
-//                     </div>
-
-//                     <div className={styles.navAuto}>
-//                         <div className={styles.aB1}></div>
-//                         <div className={styles.aB2}></div>
-//                         <div className={styles.aB3}></div>
-
-//                     </div>
-//                 </div>
-
-//                 <div className={styles.navManual}> 
-//                 <label htmlFor="radio1" className={styles.mBtn}></label>
-//                 <label htmlFor="radio1" className={styles.mBtn}></label>
-//                 <label htmlFor="radio1" className={styles.mBtn}></label>
-                
-//                 </div>
-//             </div>
-
-//         </selection>
-
-  
-                
-//         </>
-//     );
-
-// }
 
