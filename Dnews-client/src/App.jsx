@@ -25,8 +25,9 @@ import Profile from "./components/AUTH/Profile/Profile";
 import NewsDetails from "./components/NEWS/News_Details/NewsDetails";
 
 
-import TestFeed from "./components/TestFeed/TestFeed"
-import AuthGuard from "./components/GUARDS/AuthGuard";
+
+// import AuthGuard from "./components/GUARDS/AuthGuard";
+import EditNews from "./components/NEWS/Edit_News/EditNews";
 
 
 
@@ -34,6 +35,7 @@ function App() {
   return (
     <AuthProvider>
       <HeaderComponent />
+      <main id="site-content">
 
       <Routes>
         <Route path="/" element={<Home />} />
@@ -56,13 +58,10 @@ function App() {
 
 
         <Route path='/details/:newsID' element={<NewsDetails />} />
+        <Route path='/edit/:newsID' element={<EditNews />} />
 
 
-   
-
-
-
-        <Route path='/test' element={<TestFeed />} />
+  
 
    {/* GUARDSSSSS */}
 
@@ -74,6 +73,7 @@ function App() {
 
 
       </Routes>
+      </main>
 
       <FooterComponent />
     </AuthProvider>

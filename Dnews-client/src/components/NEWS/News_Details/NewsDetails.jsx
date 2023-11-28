@@ -1,36 +1,69 @@
 import styles from "../News_Details/NewsDetails.module.css";
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, useReducer } from "react";
 
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 import * as newsService from "../../../services/newsService";
+import * as commentsService from '../../../services/commentsService'
 
 import { AuthContext } from "../../../contexts/AuthContext";
+
+import reducer from "./commentReducer"
+
 import formatData from "../../utils/formatDataUtils";
 import DeleteNews from "../DeleteNews/DeleteNews";
+import useForm from "../../../Hooks/useForm";
+
+import Modal from "react-modal"; 
+
 
 export default function NewsDetails() {
 
-document.title = 'Details';
+  document.title = 'Details';
 
-  const navigate = useNavigate();
+const navigate = useNavigate();
 
   const { auth } = useContext(AuthContext);
   const { newsID } = useParams();
   const [deleteBtn, setDeleteBtn] = useState(false);
+  const [comments, dispatch] = useReducer(reducer, []);
 
   const [newsDetails, setNewsDetails] = useState({});
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     newsService
       .getOneNews(newsID)
       .then((result) => setNewsDetails(result))
       .catch((err) => console.log(err));
+
+      commentsService.getAll(newsID)
+      .then((result) => {
+          dispatch({
+              type: 'GET_ALL_COMMENTS',
+              payload: result,
+          });
+      });
   }, [newsID, auth]);
 
-  const deleteHandler = () => {
-    setDeleteBtn(true);
-  };
+  const addCommentHandler = async (values) => {
+    const newComment = await commentsService.create(
+        newsID,
+        values.comment
+    );
+
+    newComment.owner = { auth };
+
+    dispatch({
+        type: 'ADD_COMMENT',
+        payload: newComment
+    })
+}
+
+  // const deleteHandler = () => {
+  //   setDeleteBtn(true);
+  // };
 
   const onDeleteNews = (e) => {
     e.preventDefault();
@@ -50,6 +83,19 @@ document.title = 'Details';
       console.log("test");
     }
   }
+
+  const { values, changeHandler, submitHandler } = useForm(addCommentHandler, {
+    comment: '',
+});
+
+const openModal = () => {
+  setIsModalOpen(true);
+};
+
+const closeModal = () => {
+  setIsModalOpen(false);
+};
+
   return (
     <div className={styles.newsContainer}>
       {deleteBtn && (
@@ -80,11 +126,47 @@ document.title = 'Details';
           <button className={styles.editBtn}>
             <Link to={`/edit/${newsID}`}>Редактирай</Link>
           </button>
-          <button className={styles.deteleBtn} type="submit" onClick={deleteHandler}>
+          <button className={styles.deteleBtn} type="submit" onClick={openModal} >
             Изтрий новината
           </button>
+
+          <article className="create-comment">
+                <label>Add new comment:</label>
+                <form className="form" onSubmit={submitHandler}>
+                    <textarea name="comment" value={values.comment} onChange={changeHandler} placeholder="Comment......"></textarea>
+                    <input className="btn submit" type="submit" value="Add Comment" />
+                </form>
+            </article>
+
         </>
       )}
+
+ <Modal
+          isOpen={isModalOpen}
+          onRequestClose={closeModal}
+          contentLabel="Delete Confirmation Modal"
+          className={styles.modal}
+          overlayClassName={styles.overlay}
+        >
+          <p>Сигурни ли сте, че искате да изтриете новината?</p>
+          
+          <div className={styles.modalbTN}> 
+
+
+          <button className={styles.yes}
+            type="button"
+        
+            onClick={onDeleteNews}
+            >
+            Да
+          </button>
+          <button className={styles.no} onClick={closeModal}>Не</button>
+              </div>
+        </Modal> 
+ 
+
+
+      
       </div>
    
     </div>

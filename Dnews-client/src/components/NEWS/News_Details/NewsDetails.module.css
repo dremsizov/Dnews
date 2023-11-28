@@ -59,3 +59,78 @@ h2 {
     cursor: pointer;
     font-size: 1rem;
 }
+
+
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 3rem;
+    border-radius: 2rem;
+    outline: none;
+    text-align: center;
+  }
+  
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .modal p {
+    font-size: 2rem;
+    padding-bottom: 2rem;
+  }
+  
+  .modal .modalbTN {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .yes {
+    font-size: 2rem;
+    width: 8rem;
+    border-radius: 2rem;
+    padding: 0.5rem;
+    cursor: pointer;
+  }
+  
+  .yes:hover {
+    background-color: #63cf68;
+  }
+  
+  .no {
+    font-size: 2rem;
+    width: 8rem;
+    border-radius: 2rem;
+    padding: 0.5rem;
+    cursor: pointer;
+  }
+  
+  .no:hover {
+    background-color: rgb(229, 81, 81);
+  }
+  
+  .newsInfoTextArea {
+    padding: 0px 15px;
+    margin-bottom: 25px;
+    width: 100%;
+    font-size: 2.5rem;
+    font-weight: normal;
+    height: 15rem;
+  }
+  
+  .titleText {
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+  
