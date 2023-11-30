@@ -1,4 +1,10 @@
-
+footer{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    
+}
 .optionSection{
     display: flex;
     justify-content: space-around;

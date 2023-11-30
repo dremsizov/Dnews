@@ -1,7 +1,12 @@
 import styles from "../Profile/Profile.module.css"
-import {  useContext } from "react";
+import {  useContext, useState, useEffect } from "react";
 
 import {AuthContext} from "../../../contexts/AuthContext"
+
+import * as newsService from "../../../services/newsService"
+// import * as purchaseService from "../../../services/purchaseApi"
+
+import NewsItem from "../../NewsItem/NewsItem"
 
 // import Modal from "react-modal";
 // import { Link, useNavigate, useParams } from "react-router-dom";
@@ -20,6 +25,15 @@ import {AuthContext} from "../../../contexts/AuthContext"
 export default function Profile () {
 
     const { auth } = useContext(AuthContext);
+    const [NewsOwner, setNewsOwner] = useState([]);
+
+
+    useEffect(() => {
+        newsService.getOwnerNews(auth._id)
+        .then((result) => setNewsOwner(result))
+        .catch((error) => console.log(error.message))
+    }, [auth]);
+
 
     // const [isModalOpen, setIsModalOpen] = useState(false);
     // const navigate = useNavigate();
@@ -100,6 +114,25 @@ export default function Profile () {
                 <div className={styles.profileNewsCreateTitle}>
                     <h2>Новините, които ти написа за нас!</h2>
                 </div>
+
+                {NewsOwner.length > 0
+                
+                ? (
+                    <>
+                    <div>
+                        {NewsOwner.map(newsCard =>(
+                            <NewsItem
+                            {...newsCard}
+                         />
+                        ))}
+                    </div>
+                    </>
+                ):
+                <div>
+                <p>Вие все още не сте създали своите публикации!</p>
+                </div>
+                }
+                
 
             </div>
             

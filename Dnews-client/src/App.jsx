@@ -24,10 +24,8 @@ import CreateNews from "./components/NEWS/CREATE-NEWS/CreateNews";
 import Profile from "./components/AUTH/Profile/Profile";
 import NewsDetails from "./components/NEWS/News_Details/NewsDetails";
 
-
-
-// import AuthGuard from "./components/GUARDS/AuthGuard";
 import EditNews from "./components/NEWS/Edit_News/EditNews";
+import SearchNews from "./components/NEWS/Search_News/SearchNews";
 
 
 
@@ -51,6 +49,7 @@ function App() {
         <Route path="/politics" element={<Politics />} />
        
         
+        <Route path="/search" element={<SearchNews />} />
         <Route path="/economic" element={<Economics />} />
         <Route path="/sport" element={<Sport />} />
         <Route path="/lifestyle" element={<Lifestyle />} />

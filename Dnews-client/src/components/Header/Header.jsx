@@ -43,7 +43,9 @@ export default function HeaderComponent() {
         </div>
         <div className={styles["icons"]}>
           <div className={styles["searchBTN"]}>
+            <Link to="/search">
             <i className="fa-solid fa-magnifying-glass"></i>
+            </Link>
           </div>
 
           {auth ? (
