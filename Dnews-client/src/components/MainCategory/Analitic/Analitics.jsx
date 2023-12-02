@@ -3,10 +3,10 @@ import { useEffect, useState } from 'react';
 import * as newsService from '../../../services/newsService'
 
 
-import NewsItem from '../../NewsItem/NewsItem';
+import NewsCard from '../../NewsItem/NewsItem';
 
 
-export default function Analitics(){
+export default function AnaliticsNews(){
 
     const [analitics, setAnalitics] = useState([]);
     
@@ -28,15 +28,9 @@ export default function Analitics(){
                 ? (
                     <>
                     {
-                        analitics.map(news => (
-                            <NewsItem
-                                key={news._id}
-                                _id={news._id}
-                                category={news.category}
-                                title={news.title}
-                                newsInfo ={news.newsInfo}
-                                image={news.image}
-                                _createdOn={news._createdOn}
+                        analitics.map(newsCard => (
+                            <NewsCard
+                                {...newsCard}
                                 />
 
 
@@ -45,7 +39,7 @@ export default function Analitics(){
                     </>
                 )
                 :
-                <h3> Никой не е направил Анализи още</h3>
+                <h3> Още никой не е направил своя анализ!</h3>
 }
             </div>
         </div>

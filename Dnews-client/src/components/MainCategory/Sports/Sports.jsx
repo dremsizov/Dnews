@@ -7,13 +7,13 @@ import * as newsService from '../../../services/newsService'
 import NewsCard from '../../NewsItem/NewsItem';
 
 
-export default function WorldNews(){
+export default function SportsNews(){
 
-    const [worlds, setWorldsNews] = useState([]);
+    const [sports, setSportsNews] = useState([]);
     
     useEffect(() => {
-        newsService.getAllWorld()
-        .then(result => setWorldsNews(result))
+        newsService.getAllSports()
+        .then(result => setSportsNews(result))
         .catch(err => console.log(err))
     }, 
     [])
@@ -22,14 +22,14 @@ export default function WorldNews(){
         <>
         <div className={styles.title}>
 
-        <h2> Новини - свят</h2>
+        <h2>В ритъма на спортните новини</h2>
 
             <div>
-                {worlds.length > 0
+                {sports.length > 0
                 ? (
                     <>
                     {
-                        worlds.map(newsCard => (
+                        sports.map(newsCard => (
                             <NewsCard
                                 {...newsCard}
                                 />

@@ -12,10 +12,10 @@ import Login from "./components/AUTH/Login/Login";
 import NotFound from "./components/NotFound/NotFound";
 import AllNews from "./components/MainCategory/AllNews/AllNews";
 import Bulgaria from "./components/MainCategory/Bulgaria/Bulgaria";
-import World from "./components/MainCategory/World/world";
+import World from "./components/MainCategory/World/World";
 import Politics from "./components/MainCategory/Politics/Politics";
 import Economics from "./components/MainCategory/Economics/Economics";
-import Sport from "./components/MainCategory/Sports/Sport";
+import Sports from "./components/MainCategory/Sports/Sports";
 import Lifestyle from "./components/MainCategory/Lifestyle/Lifestyle";
 import Analitics from "./components/MainCategory/Analitic/Analitics";
 import Register from "./components/AUTH/Register/Register";
@@ -51,7 +51,7 @@ function App() {
         
         <Route path="/search" element={<SearchNews />} />
         <Route path="/economic" element={<Economics />} />
-        <Route path="/sport" element={<Sport />} />
+        <Route path="/sport" element={<Sports />} />
         <Route path="/lifestyle" element={<Lifestyle />} />
         <Route path="/analitics" element={<Analitics />} />
 

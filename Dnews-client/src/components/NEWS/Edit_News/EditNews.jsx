@@ -11,6 +11,7 @@ Modal.setAppElement("#root");
 const formEditInitialState = {
   title: "",
   newsInfo: "",
+  fullInfor: "",
   image: "",
   category: "", 
 };
@@ -110,7 +111,7 @@ export default function EditNews() {
           <br />
 
           <label htmlFor="newsInfo" className={styles.newsInfo}>
-            Описание на новината:
+          Въведение в новината:
             <textarea
             className={styles.newsInfoTextArea}
               type="text"
@@ -121,6 +122,19 @@ export default function EditNews() {
             />
           </label>
           <br />
+
+          <label htmlFor="fullInfo" className={styles.fullInfo}>
+            Пълно описание на новината:
+            <textarea
+            className={styles.newsInfoTextArea}
+              type="text"
+              name="fullInfo"
+              id="fullInfo"
+              value={formEditValues.fullInfo}
+              onChange={handleChange}
+            />
+          </label>
+          <br /> 
 
           <label htmlFor="image">
             Добавяне на снимка чрез линк:
@@ -247,7 +261,7 @@ export default function EditNews() {
                 Object.values(formEditValues).some((x) => x == "")
               }
             >
-              Създай
+              Редактирай новината
             </button>
             <Link to="/">
               <button className={styles.cancelBtnNo} type="button">
@@ -265,7 +279,7 @@ export default function EditNews() {
           className={styles.modal}
           overlayClassName={styles.overlay}
         >
-          <p>Сигурни ли сте, че искате да публикувате новината?</p>
+          <p>Сигурни ли сте, че искате да редактирате новината?</p>
           
           <div className={styles.modalbTN}> 
 

@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 
 import HomeNewsCard from "./HomeNewsCard";
 
-import SliderCard from "../SliderCard/SliderCard";
+// import SliderCard from "../SliderCard/SliderCard";
 
 
 
@@ -30,13 +30,13 @@ export default function Home() {
    
     
     <>
-     <div className={styles.newsContainer}>
+     {/* <div className={styles.newsContainer}>
             {reversedNews.map(newscard =>(
                 <SliderCard 
                 {...newscard}
                 />
                 ))}
-        </div>
+        </div> */}
 
     <div className={styles.newsContainer}>
             {reversedNews.map(newscard =>(

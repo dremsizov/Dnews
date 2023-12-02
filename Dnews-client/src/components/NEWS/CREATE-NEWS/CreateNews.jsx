@@ -11,8 +11,9 @@ Modal.setAppElement("#root");
 const formCreateInitialState = {
   title: "",
   newsInfo: "",
+  fullInfo: "",
   image: "",
-  category: "", // Стартова категория
+  category: "", 
 };
 
 export default function CreateNews() {
@@ -83,17 +84,31 @@ export default function CreateNews() {
           <br />
 
           <label htmlFor="newsInfo" className={styles.newsInfo}>
-            Описание на новината:
+            Въведение в новината:
             <textarea
             className={styles.newsInfoTextArea}
               type="text"
               name="newsInfo"
               id="newsInfo"
-              value={formCreateValues.description}
+              value={formCreateValues.newsInfo}
               onChange={handleChange}
             />
           </label>
           <br />
+
+
+           <label htmlFor="fullInfo" className={styles.fullInfo}>
+            Пълно описание на новината:
+            <textarea
+            className={styles.newsInfoTextArea}
+              type="text"
+              name="fullInfo"
+              id="fullInfo"
+              value={formCreateValues.fullInfo}
+              onChange={handleChange}
+            />
+          </label>
+          <br /> 
 
           <label htmlFor="image">
             Добавяне на снимка чрез линк:

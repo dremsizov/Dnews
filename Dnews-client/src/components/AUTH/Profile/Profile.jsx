@@ -35,52 +35,13 @@ export default function Profile () {
     }, [auth]);
 
 
-    // const [isModalOpen, setIsModalOpen] = useState(false);
-    // const navigate = useNavigate();
-
-    // const {userID} = useParams()
-    // const [formUserValues, setFormUserValues] = useState(
-    //     formUserInitialState
-    //   );
-    //   const [errors, setErrors] = useState({});
-    
-    //   useEffect(()=> {
-    //     userService.getOneNews(newsID)
-    //     .then(result=>setFormUserValues(result))
-    //     .catch(err => console.log(err));
-    // }, [userID])
-
-
-    // const resetUserFormHandler = () => {
-    //     setFormUserValues(formEditInitialState);
-    //     setErrors({});
-    //   };
-    
-    //   const formUserSubmitHandler = (e) => {
-    //     e.preventDefault();
-    //     setIsModalOpen(true);
-    //   };
-
-    //   const handleModalClose = () => {
-    //     setIsModalOpen(false);
-    //   };
-
-    //   const handleUserConfirmation = () => {
-    //     userService
-    //       .editNews(userID,formUserValues)
-    //       .then(() => {
-    //         setIsModalOpen(false);
-    //         navigate("/profile");
-    //       })
-    
-    //       .catch((error) => console.log(error));
-    
-    //       resetUserFormHandler();
-    //   };
 
     return (
         <>
         <section className={styles.wrapper}>
+            <div className={styles.profilewrapper}>
+
+            
             <div className={styles.profileCardContainer}>
                 <div className={styles.profileImage}>
                     <img src="/assets/profile8.png" alt="" />
@@ -108,6 +69,7 @@ export default function Profile () {
             >
               Промени своите профил данни
             </button>
+            </div>
             </div>
             </div>
             <div className={styles.profileNewsCreate}>

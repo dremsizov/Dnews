@@ -43,10 +43,22 @@ export const editNews = async (newsID, newsData) => {
     return result
 }
 
-// GET ONE NEWS//////////////
+
+
+////////////////////////////////////////////////////// GET ONE NEWS//////////////
 
 export const getOneNews = async (newsID) => {
     const result = await request.get(`${apiURL}/${newsID}`);
+
+    return result;
+};
+
+
+//////////////////////////////////////////////// GET LAST 3 NEWS //////////////////////////////////////////
+
+export const getLastTreeNews = async () => {
+    const query = new URLSearchParams('offset=0&pageSize=3');
+    const result = await request.get(`${apiURL}?sortBy=_createdOn%20desc&${query}`);
 
     return result;
 };
@@ -65,11 +77,76 @@ export const getOwnerNews = async (userID) => {
 
 ////////////////////////////////////////// GET Category /////////////////////////////////////////////
 
-export const getAllAnalitics = async () => {
-    const categoryAnalitics = 'Aнализи'
-    const itemQuery = new URLSearchParams({
-        where: `category="${categoryAnalitics}"`,
-    });
-    const result = await request.get(`${apiURL}?${itemQuery}`);
-    return Object.values(result)
+
+   
+///// България
+
+export const getAllBG = async () => {
+    const response = await fetch(apiURL);
+    const result = await response.json();
+
+    const data = Object.values(result).filter(product => product.category == 'България');
+    return data;
 }
+
+////// СВЯТ
+
+export const getAllWorld = async () => {
+    const response = await fetch(apiURL);
+    const result = await response.json();
+
+    const data = Object.values(result).filter(product => product.category == 'Свят');
+    return data;
+}
+
+/// ПОЛИТИКА
+
+export const getAllPolitics = async () => {
+    const response = await fetch(apiURL);
+    const result = await response.json();
+
+    const data = Object.values(result).filter(product => product.category == 'Политика');
+    return data;
+}
+
+///// Икономика
+
+export const getAllEconomics = async () => {
+    const response = await fetch(apiURL);
+    const result = await response.json();
+
+    const data = Object.values(result).filter(product => product.category == 'Икономика');
+    return data;
+}
+
+// СПОРТ
+export const getAllSports = async () => {
+    const response = await fetch(apiURL);
+    const result = await response.json();
+
+    const data = Object.values(result).filter(product => product.category == 'Спорт');
+    return data;
+};
+
+
+///// Любопитно
+
+export const getAllLifeStyles = async () => {
+    const response = await fetch(apiURL);
+    const result = await response.json();
+
+    const data = Object.values(result).filter(product => product.category == 'Любопитно');
+    return data;
+};
+
+
+///// АНАЛИЗИ
+export const getAllAnalitics = async () => {
+    const response = await fetch(apiURL);
+    const result = await response.json();
+
+    const data = Object.values(result).filter(product => product.category == 'Анализи');
+    return data;
+}
+
+

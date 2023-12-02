@@ -10,6 +10,8 @@ import { AuthContext } from "../../../contexts/AuthContext";
 
 import reducer from "./commentReducer"
 
+import NewsCard from "../../NewsItem/NewsItem"
+
 import formatData from "../../utils/formatDataUtils";
 import DeleteNews from "../DeleteNews/DeleteNews";
 import useForm from "../../../Hooks/useForm";
@@ -22,6 +24,8 @@ export default function NewsDetails() {
   document.title = 'Details';
 
 const navigate = useNavigate();
+
+const [newsTree, setNews] = useState([]);
 
   const { auth } = useContext(AuthContext);
   const { newsID } = useParams();
@@ -36,6 +40,11 @@ const navigate = useNavigate();
     newsService
       .getOneNews(newsID)
       .then((result) => setNewsDetails(result))
+      .catch((err) => console.log(err));
+
+      newsService
+      .getLastTreeNews()
+      .then((result) => setNews(result))
       .catch((err) => console.log(err));
 
       commentsService.getAll(newsID)
@@ -97,7 +106,10 @@ const closeModal = () => {
 };
 
   return (
-    <div className={styles.newsContainer}>
+    
+    <div className="bigWrapper"> 
+      
+      <div className={styles.newsContainer}>
       {deleteBtn && (
         <DeleteNews
           onClose={() => setDeleteBtn(false)}
@@ -137,7 +149,6 @@ const closeModal = () => {
                     <input className="btn submit" type="submit" value="Add Comment" />
                 </form>
             </article>
-
         </>
       )}
 
@@ -167,8 +178,20 @@ const closeModal = () => {
 
 
       
+
       </div>
    
     </div>
+
+    <div className="lastTreeWrapper">
+              <h2>Нашите послени новини </h2>
+            </div>
+            {newsTree.map(newsCard =>(
+              <NewsCard
+              {...newsCard}
+              />
+            ))}
+       </div>
+    
   );
 }

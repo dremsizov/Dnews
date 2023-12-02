@@ -1,47 +1,49 @@
-import styles from '../Politics/Politics.module.css'
+import styles from "../Politics/Politics.module.css"
 
-export default function Politics(){
-    return (
+import { useEffect, useState } from 'react';
+import * as newsService from '../../../services/newsService'
+
+
+import NewsCard from '../../NewsItem/NewsItem';
+
+
+export default function PoliticsNews(){
+
+    const [politics, setPoliticsNews] = useState([]);
+    
+    useEffect(() => {
+        newsService.getAllPolitics()
+        .then(result => setPoliticsNews(result))
+        .catch(err => console.log(err))
+    }, 
+    [])
+
+    return(
         <>
-       <div className={styles['wrapper']}>
+        <div className={styles.title}>
+
+        <h2>Политическите новини</h2>
+
+            <div>
+                {politics.length > 0
+                ? (
+                    <>
+                    {
+                        politics.map(newsCard => (
+                            <NewsCard
+                                {...newsCard}
+                                />
 
 
-        <article className={styles['artCard']}>
-            <div className={styles['newsCardT']}>
-
-        <img src="./assets/asenVasilev.jpg" alt="" />
-        <div className={styles['newsInfo']}>
-            <h3>Вот на недоверие</h3>
-            <p className={styles['newsDate']}>15 Ноември</p>
-            <p className={styles['newsText']}>Повече от 4 часа депутатите обсъждаха внесеният от опозицията вот на недоверие</p>
-        </div>
+                        ))
+                    }
+                    </>
+                )
+                :
+                <h3>Все още нямаме новини в тази категория!</h3>
+}
             </div>
-        </article>
-
-        <article className={styles['artCard']}>
-        <div className={styles['newsCardT']}>
-        <img src="./assets/beer.jpg" alt="" />
-        <div className={styles['newsInfo']}>
-            <h3>Вот на недоверие</h3>
-            <p className={styles['newsDate']}></p>
-            <p className={styles['newsText']}></p>
         </div>
-        </div>
-        </article>
-
-        <article className={styles['artCard']}>
-        <div className={styles['newsCardT']}>
-        <img src="./assets/ns.jpg" alt="" />
-        <div className={styles['newsInfo']}>
-            <h3>Вот на недоверие</h3>
-            <p className={styles['newsDate']}></p>
-            <p className={styles['newsText']}></p>
-        </div>
-        </div>
-        </article>
-
-
-       </div>
         </>
     )
 }
