@@ -1,9 +1,13 @@
-import { useContext, useEffect, useRef,useState } from "react";
-// import useForm from "../../../Hooks/useForm";
+import { useContext, useState } from "react";
+import { Link } from 'react-router-dom'
+
+
+
+import useForm from "../../../Hooks/useForm";
 import {useNavigate } from 'react-router-dom';
 
 import styles from "../../AUTH/Login/Login.module.css";
-import * as authApi from "../../../services/userService"
+import * as userService from "../../../services/userService"
 import {AuthContext} from "../../../contexts/AuthContext";
 
 const formInitialData = {
@@ -13,62 +17,50 @@ const formInitialData = {
 
 export default function Login() {
     const navigate = useNavigate();
-    const {auth, setAuth} = useContext(AuthContext);
-    const isMountedRef = useRef(false);
+
+    const [seePassword, setSeePassword] = useState(false)
+    const {setAuth} = useContext(AuthContext);
+    
     const [formValues, setFormValues] = useState(formInitialData)
-
     const [errors, setErrors] = useState({});
-  const [hasServerError, setHasServerError] = useState(false);
-  const [serverError, setServerError] = useState({});
 
 
-  useEffect(() => {
-    if (!isMountedRef.current) {
-      isMountedRef.current = true;
-      return;
-    }
-
-    console.log('Формата е актуализирана');
-  }, [formValues]);
+    const resetFormHandler = () => {
+      setFormValues(formInitialData);
+    };
 
 
+    const submitHandler = (values) => {
+ 
+      userService.login(values)
+        .then(account => {
+          setAuth(account);
+          navigate('/');
+  
+          console.log(account);
+        })
+        .catch((error) => console.log(error.message))
+  
+      resetFormHandler();
+    };
 
 
 
-  const changeHandler = (e) => {
-    let value = '';
-    if (e.target.type) {
-      value = e.target.value;
-    }
+  // const changeHandler = (e) => {
+  //   let value = '';
+  //   if (e.target.type) {
+  //     value = e.target.value;
+  //   }
 
-    setFormValues(state => ({
-      ...state,
-      [e.target.name]: value,
-    }));
-  };
+  //   setFormValues(state => ({
+  //     ...state,
+  //     [e.target.name]: value,
+  //   }));
+  // };
 
-  const resetFormHandler = () => {
-    setFormValues(formInitialData);
-    setErrors({});
-  };
 
-  const submitHandler = (e) => {
-    e.preventDefault();
 
-    authApi.login(formValues)
-      .then(user => {
-        setAuth(user);
-        navigate('/');
 
-        console.log(user);
-      })
-      .catch(error => {
-        setHasServerError(true);
-        setServerError(error.message);
-      });
-
-    resetFormHandler();
-  };
 
   function validateEmail(email) {
     const emailRegex = /^[a-zA-Z]+@[a-zA-Z]+\.[a-zA-Z]+$/;
@@ -76,7 +68,7 @@ export default function Login() {
   }
 
   const emailValidator = () => {
-    if (!validateEmail(formValues.email)) {
+    if (!validateEmail(values.email)) {
       setErrors(state => ({
         ...state,
         email: 'Посоченият от вас мейл адрес не е във валиден формат',
@@ -89,7 +81,7 @@ export default function Login() {
   };
 
   const passwordValidator = () => {
-    if (formValues.password.length < 6) {
+    if (values.password.length < 6) {
       setErrors(state => ({
         ...state,
         password: 'Паролата трябва да бъде минимум 6 символа!',
@@ -102,62 +94,99 @@ export default function Login() {
   };
 
 
+  const { values, onSubmit, onChange } = useForm(submitHandler, formValues);
 
+
+  const SeePasswordTogle = () => {
+    setSeePassword(!seePassword);
+};
 
   return (
     <>
       <section className={styles["loginForm"]}>
         <div className={styles["wrapper"]}>
+
           <form id="request" method='POST'
             className={styles["formlog"]}
-            onSubmit={submitHandler}
+            onSubmit={onSubmit}
           >
             <h2 className={styles["title"]}>Влез в своя профил</h2>
 
             <div className={styles["email"]}>
+              <div className={styles["emailIntput"]}>
+              
               <input
                 type="text"
-                placeholder="email"
+                className={styles.formInput}
+                placeholder="мейл"
                 name="email"
                 id="email"
                 required
-                onChange={changeHandler}
-                value={formValues.email}
+                onChange={onChange}
+                value={values.email}
                 onBlur={emailValidator}
               />
-                {errors.email && (
+              <i className="fa-solid fa-at"></i>
+            {errors.email && (
                     <p className={styles.errorMessage}>{errors.email}</p>
                   )}
-              <i className="fa-solid fa-at"></i>
+
+              </div>
+              
+             
             </div>
 
             <div className={styles["pass"]}>
+              <div className={styles["passIntput"]}>
+
               <input
-                type="password"
+                className={styles.formInput}
+                type={seePassword ? 'text' : 'password'}
                 id="password"
-                placeholder="password"
+                placeholder="парола"
                 name="password"
                 required
-                onChange={changeHandler}
-                value={formValues.password}
+                onChange={onChange}
+                value={values.password}
                 onBlur={passwordValidator}
               />
-               {errors.password && (
+
+<div
+                                onClick={SeePasswordTogle}
+                                className={styles.showHideBtn}>
+                                {seePassword ? (
+                                  <i className="fa-regular fa-eye"></i>
+                                ) : (
+                                  <i className="fa-solid fa-eye-slash"></i>
+                                )}
+                            </div>
+
+{errors.password && (
                     <p className={styles.errorMessage}>{errors.password}</p>
                   )}
-              <i className="fa-solid fa-key"></i>
+              </div>
+              
+               
+              
             </div>
 
             <div className={styles["signUp"]}>
-              <input type="submit"
+              <button type="submit"
               
-              disabled={(Object.values(errors).some(x => x))
-                || (formValues.email == '' || formValues.password == '')}
+              disabled={(Object.values(errors).some(x => x)
+                || (Object.values(values).some(x => x == '')))}
               
-              value={"Влез в профила си"} />
-               {hasServerError && (
-                    <p className={styles.serverError}>{serverError}</p>
-                  )}
+             >
+              Влез
+             </button>
+
+             <div className={styles.loginNav}>
+                  <p>
+                    Все още нямате регистрация?
+                    <Link to='/register'>Кликни тук</Link>
+                  </p>
+             </div>
+               
             </div>
           </form>
         </div>

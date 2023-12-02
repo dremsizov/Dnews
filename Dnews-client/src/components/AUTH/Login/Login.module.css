@@ -1,4 +1,5 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css");
+
 *{
     margin: 0;
     padding: 0;
@@ -7,7 +8,6 @@
 }
 
 .loginForm{
-    display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
@@ -16,20 +16,45 @@
     background-repeat: no-repeat;
     background-position: center;
     width: auto;
+    padding: 5rem 25rem;
 }
 
 .wrapper{
-    max-width: 1300px;
-    padding: 2rem;
-    margin: 3rem 8rem;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    max-width: 55rem;
     border-radius: 3rem;
-    overflow: hidden;
     background: rgba(0,0,0,0.2);
     box-shadow: 0 15px 20px rgba(0,0,0,0.6);
+    overflow: hidden;
+
+  
 }
 
 .formlog{
-    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+    padding:0 4rem;
+}
+
+.emailInput, .passwordInput{
+    display: flex;
+    text-align: center;
+}
+
+.formInput{
+    font-size: 2rem;
+    padding: 0.2em 1em 0.2em 1em;
+}
+
+.formInput:focus{
+    outline: none;
+}
+
+.showHideBtn{
+    cursor: pointer;
 }
 
 .wrapper h2{
