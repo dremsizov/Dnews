@@ -123,15 +123,17 @@ const closeModal = () => {
           <p>{newsDetails.category}</p>
           <p>{formatData(newsDetails._createdOn)}</p>
         </div>
+        <div className={styles.imageContainer}>
+        <img src={newsDetails.image} alt="" />
+      </div>
+
         <div className={styles.newsInfo}>
           <p className={styles.firstPart}>{newsDetails.newsInfo}</p>
           <p className={styles.secondPart}>{newsDetails.fullInfo}</p>
         </div>
       </div>
       <div className={styles.imagBtnContainer}>
-      <div className={styles.imageContainer}>
-        <img src={newsDetails.image} alt="" />
-      </div>
+      
 
       {isNewsOwner && (
         <>
