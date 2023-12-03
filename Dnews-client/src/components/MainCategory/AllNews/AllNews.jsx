@@ -3,7 +3,7 @@ import styles from '../AllNews/AllNews.module.css'
 
 
 import { useState, useEffect } from "react";
-import NewsItem from "../../NewsItem/NewsItem";
+import NewsItem from "../../NewsItemCards/NewsItem";
 
 
 export default function AllNews() {

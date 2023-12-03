@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import * as newsService from '../../../services/newsService'
 
 
-import NewsCard from '../../NewsItem/NewsItem';
+import NewsCard from '../../NewsItemCards/NewsItem';
 
 
 export default function AnaliticsNews(){
