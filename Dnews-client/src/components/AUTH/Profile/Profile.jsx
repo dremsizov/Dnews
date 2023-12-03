@@ -6,7 +6,7 @@ import {AuthContext} from "../../../contexts/AuthContext"
 import * as newsService from "../../../services/newsService"
 // import * as purchaseService from "../../../services/purchaseApi"
 
-import NewsItem from "../../NewsItemCards/NewsItem"
+import NewsItem from "../../NewsItemCards/NewsCardCatalog/NewsItem";
 
 // import Modal from "react-modal";
 // import { Link, useNavigate, useParams } from "react-router-dom";

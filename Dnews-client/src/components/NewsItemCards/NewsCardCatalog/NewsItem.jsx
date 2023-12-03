@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
-import styles from '../NewsItemCards/NewsItem.module.css'
-import formatData from '../utils/formatDataUtils'
+import styles from '../NewsItemCards/../NewsCardCatalog/NewsItem.module.css'
+import formatData from '../../utils/formatDataUtils'
 
 export default function NewsItem({
     title,

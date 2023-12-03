@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 
 import * as newsService from "../../../services/newsService";
 
-import NewsItem from "../../NewsItemCards/NewsItem"
+import NewsItem from "../../NewsItemCards/NewsCardCatalog/NewsItem";
 
 const initialSearchVaelue = {
     search: "",
