@@ -1,60 +1,6 @@
 .newsContainer{
 margin: 2rem;
+display: flex;
+flex-wrap: wrap;
 }
 
-
-.wrapper{
-  margin: 2rem;
-  display: flex;
-}
-
-.newsContainter{
-  width: 70%;
-}
-
-
-.newsCard{
- display: flex;
- width: 100%;
- height: 15rem;
- overflow: hidden;
-margin-bottom: 2rem;
-}
-.newsCard:hover{
-  border: 1px solid black;
-  cursor: pointer;
-}
-
-.cardNewsImg img{
-  width: 25rem;
-  height: 15rem;
-  object-fit: cover;
- 
-  
-}
-
-.cardNesInfo h3{
-  font-size: 2rem;
-}
-
-.publicDate{
-  font-size: 1rem;
-  font-style: italic;
-  }
-
-  .firstrow{
-    font-size: 1.4rem;
-  }
-
-.lastNews{
-  width: 28%;
-  padding: 1rem;
-}
-.newsCardLast{
-margin-bottom: 2rem;
-}
-.newsCardLast:hover{
-  cursor: pointer;
-  border: 4px solid blue;
- 
-}
