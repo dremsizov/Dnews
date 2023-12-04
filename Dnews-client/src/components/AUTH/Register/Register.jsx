@@ -1,6 +1,5 @@
 import styles from "../../AUTH/Register/Register.module.css";
-import { Link } from "react-router-dom";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from "react-router-dom";
 import { useState, useContext } from "react";
 
 import useForm from "../../../Hooks/useForm";
@@ -22,6 +21,7 @@ const regFormInitialState = {
 
 export default function Register() {
   document.title = 'Регистрация';
+
   const navigate = useNavigate();
 
   const {setAuth} = useContext(AuthContext);
@@ -37,9 +37,7 @@ export default function Register() {
     setErrors({})
   };
 
-
-
-  const submitHandler = (values) => {
+ const submitHandler = (values) => {
   
     userService.register(values)
     .then(account => {
@@ -50,14 +48,6 @@ export default function Register() {
 
     resetRegFormHandler();
   };
-
-  // const changeHandler = (e) => {
-  //   setFormRegValues(state => ({
-  //     ...state,
-  //     [e.target.name]: e.target.value,
-  //   }));
-  // };
-
 
 
 
@@ -317,8 +307,7 @@ export default function Register() {
                     <Link to='/login'> Кликни тук</Link>
                   </p>
              </div>
-
-  
+ 
 
               </div>
             </div>
