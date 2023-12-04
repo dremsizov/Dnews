@@ -1,9 +1,14 @@
 import styles from "../../AUTH/Register/Register.module.css";
+import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
-import { useState, useContext,useEffect,useRef } from "react";
+import { useState, useContext } from "react";
+
+import useForm from "../../../Hooks/useForm";
 
 import { AuthContext } from "../../../contexts/AuthContext";
-import * as authApi from '../../../services/userService'
+import * as userService from '../../../services/userService'
+
+
 
 const regFormInitialState = {
   firstName: "",
@@ -12,39 +17,17 @@ const regFormInitialState = {
   username: "",
   password: "",
   repass: "",
-  // userOprion: "",
+  
 };
 
 export default function Register() {
   const navigate = useNavigate();
 
-  const {auth, setAuth} = useContext(AuthContext);
-
-  const isMountedRef = useRef(false)
+  const {setAuth} = useContext(AuthContext);
 
   const [formRegValues, setFormRegValues] = useState(regFormInitialState);
   const [errors, setErrors] = useState({});
 
-  const [hasServerError, setHasServerError] = useState(false);
-  const [serverError, setServerError] = useState({});
-
-
-  useEffect(() => {
-    if (!isMountedRef.current) {
-      isMountedRef.current = true;
-      return;
-    }
-
-    console.log('Формулярът е актуализиран');
-  }, [formRegValues]);
-
-
-  const changeHandler = (e) => {
-    setFormRegValues(state => ({
-      ...state,
-      [e.target.name]: e.target.value,
-    }));
-  };
 
 
 
@@ -53,28 +36,35 @@ export default function Register() {
     setErrors({})
   };
 
-  const formSubmitHandler = (e) => {
-    e.preventDefault();
-    console.log(formRegValues);
 
-    authApi.register(formRegValues)
-    .then(user => {
-      setAuth(user)
+
+  const submitHandler = (values) => {
+  
+    userService.register(values)
+    .then(account => {
+      setAuth(account)
       navigate('/news')
       })
-      .catch(error => {
-        setHasServerError(true);
-        setServerError(error.message);
-      })
-
+      .catch((error) => console.log(error.message))
 
     resetRegFormHandler();
   };
 
+  // const changeHandler = (e) => {
+  //   setFormRegValues(state => ({
+  //     ...state,
+  //     [e.target.name]: e.target.value,
+  //   }));
+  // };
+
+
+
+
+
   /////////////////////////////////////////////////////// FIRST NAME VALIDATOR  //////////////////////////////////////////////////////
 
   const firstNameValidator = () => {
-    if (formRegValues.firstName.length < 2) {
+    if (values.firstName.length < 2) {
       setErrors(state => ({
         ...state,
         firstName: "Собственото име трябва да е повече от 2 символа!",
@@ -94,7 +84,7 @@ export default function Register() {
   ///////////////////////////////////////////// LASTNAME VALIDATOR ////////////////////////////////////////////////////////
 
   const lastNameValidator = () => {
-    if (formRegValues.lastName.length < 2) {
+    if (values.lastName.length < 2) {
       setErrors(state => ({
         ...state,
         lastName: "Фамилията име трябва да е повече от 2 символа!",
@@ -112,7 +102,7 @@ export default function Register() {
     ////////////////////////////// USERNAME VALIDATOR //////////////////////////////////////////////////////
 
     const userNameValidator = () => {
-      if (formRegValues.username.length < 4) {
+      if (values.username.length < 4) {
         setErrors(state => ({
           ...state,
           username: "Потребителското име трябва да е повече от 4 символа!",
@@ -131,7 +121,7 @@ export default function Register() {
     ////////////////////////// PASSWORD VALIDATOR //////////////////////////////////////////////////////
 
     const passwordValidator = () => {
-      if(formRegValues.password.length<6){
+      if(values.password.length<6){
         setErrors(state => ({
           ...state,
           password: 'Вашата парола трябва да бъде минимум 6 символа!'
@@ -150,7 +140,7 @@ export default function Register() {
     /////////////////////////////////// REPASS VALIDATOR //////////////////////////////////////////////////////
 
     const repassValidator = () => {
-      if(formRegValues.password != formRegValues.repass) {
+      if(values.password != values.repass) {
         setErrors(state => ({
           ...state,
           repass: 'Посочената парола не съвпада!'
@@ -173,7 +163,7 @@ export default function Register() {
     }
 
     const emailValidator = () => {
-      if(!emailIsValid(formRegValues.email)){
+      if(!emailIsValid(values.email)){
         setErrors(state => ({
           ...state,
           email: 'Посоченият от вас мейл адрес не е във валиден формат',
@@ -190,11 +180,13 @@ export default function Register() {
 
     }
 
+    const { values, onChange, onSubmit } = useForm(submitHandler, formRegValues);
+
   return (
     <>
       <section className={styles["regForm"]}>
         <div className={styles["wrapper"]}>
-          <form method='POST' onSubmit={formSubmitHandler}>
+          <form id="request" method='POST' onSubmit={onSubmit}>
            
             <h2  className={styles["title"]}>Регистрация</h2>
 
@@ -206,8 +198,8 @@ export default function Register() {
                   placeholder="собствено име"
                   name="firstName"
                   id="firstName"
-                  value={formRegValues.firstName}
-                  onChange={changeHandler}
+                  value={values.firstName}
+                  onChange={onChange}
                   onBlur={firstNameValidator}
                   required
                   className={errors.firstName && styles.errorInput}
@@ -224,8 +216,8 @@ export default function Register() {
                   placeholder="фамилия"
                   name="lastName"
                   id="lastName"
-                  value={formRegValues.lastName}
-                  onChange={changeHandler}
+                  value={values.lastName}
+                  onChange={onChange}
                   onBlur={lastNameValidator}
                   required
                   className={errors.lastName && styles.errorInput}
@@ -241,8 +233,8 @@ export default function Register() {
                   type="email"
                   placeholder="въведете валиден имейл"
                   name="email"
-                  value={formRegValues.email}
-                  onChange={changeHandler}
+                  value={values.email}
+                  onChange={onChange}
                   onBlur={emailValidator}
                   id="email"
                   required
@@ -261,8 +253,8 @@ export default function Register() {
                   type="text"
                   placeholder="потребителско име"
                   name="username"
-                  value={formRegValues.username}
-                  onChange={changeHandler}
+                  value={values.username}
+                  onChange={onChange}
                   onBlur={userNameValidator}
                   id="username"
                   required
@@ -279,8 +271,8 @@ export default function Register() {
                   type="password"
                   placeholder="парола"
                   name="password"
-                  value={formRegValues.password}
-                  onChange={changeHandler}
+                  value={values.password}
+                  onChange={onChange}
                   onBlur={passwordValidator}
                   id="password"
                   required
@@ -297,8 +289,8 @@ export default function Register() {
                   type="password"
                   placeholder="парола"
                   name="repass"
-                  value={formRegValues.repass}
-                  onChange={changeHandler}
+                  value={values.repass}
+                  onChange={onChange}
                   onBlur={repassValidator}
                   id="repass"
                   required
@@ -309,34 +301,23 @@ export default function Register() {
                 )}
               </div>
 
-{/* USERS Options */}
-              {/* <div className={styles["userOption"]}>
-                <label htmlFor="userOption" id="userOption">
-                  Потребителски права
-                </label>
-                <select
-                  name="userOption"
-                  id="userOprion"
-                  onChange={changeHandler}
-                  value={formRegValues.userOprion}
-                >
-                  <option value="empty">Избери права</option>
-                  <option value="admin">Администратор</option>
-                  <option value="writer">Редактор</option>
-                </select>
-              </div> */}
 
               <div className={styles["regBtn-container"]}>
                 
                 <button type="submit"
                     disabled={(Object.values(errors).some(x => x)
-                      || (Object.values(formRegValues).some(x => x == '')))}>
+                      || (Object.values(values).some(x => x == '')))}>
                   Регистрирай се
                 </button>
 
-                {hasServerError && (
-                    <p className={styles.serverError}>{serverError}</p>
-                  )}
+                <div className={styles.loginNav}>
+                  <p>
+                    Вече имате регистрация?
+                    <Link to='/login'> Кликни тук</Link>
+                  </p>
+             </div>
+
+  
 
               </div>
             </div>
