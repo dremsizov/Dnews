@@ -115,7 +115,7 @@ export default function CreateNews() {
         fullInfo: "Полето е  задължително",
       }));
     } else {
-      if (errors.title) {
+      if (errors.fullInfo) {
         setErrors(state => ({
           ...state,
           fullInfo: "",

@@ -175,3 +175,9 @@ fieldset label input {
   font-size: 2.5rem;
   font-weight: bold;
 }
+.errorMessage{
+  color: rgb(182, 41, 41);
+  font-size: 1.4rem;
+  font-weight: 700;
+  
+}
