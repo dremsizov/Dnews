@@ -7,6 +7,7 @@ import NewsCard from "../../NewsItemCards/NewsCardCatalog/NewsItem";
 
 
 export default function AnaliticsNews(){
+    document.title = 'Анализи';
 
     const [analitics, setAnalitics] = useState([]);
     
