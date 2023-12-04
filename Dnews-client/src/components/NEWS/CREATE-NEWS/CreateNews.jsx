@@ -18,12 +18,14 @@ const formCreateInitialState = {
 
 export default function CreateNews() {
   document.title = 'Създаване на новина';
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
   const [formCreateValues, setFormCreateValues] = useState(
     formCreateInitialState
   );
   const [errors, setErrors] = useState({});
+
 
   const handleChange = (e) => {
     setFormCreateValues((state) => ({
@@ -63,6 +65,91 @@ export default function CreateNews() {
 
   // validatorssss////////////////
 
+  //////////////////////////////// Title Validatorsssssssss
+  const titleValidator = () => {
+    if (formCreateValues.title.length < 5) {
+      setErrors(state => ({
+        ...state,
+        title: "Заглавието трябва да е повече от 5 символа!",
+      }));
+    } else {
+      if (errors.title) {
+        setErrors(state => ({
+          ...state,
+          title: "",
+        }));
+      }
+    }
+  };
+/////////////////////// NewsInfo
+  const newsInfoValidator = () => {
+    if (formCreateValues.newsInfo.length < 30) {
+      setErrors(state => ({
+        ...state,
+        newsInfo: "Заглавието трябва да е повече от 30 символа!",
+      }));
+    } 
+
+    if (formCreateValues.newsInfo.length > 120) {
+      setErrors(state => ({
+        ...state,
+        newsInfo: "Заглавието не трябва да е повече от 120 символа!",
+      }));
+    } 
+          
+    else {
+      if (errors.newsInfo) {
+        setErrors(state => ({
+          ...state,
+          newsInfo: "",
+        }));
+      }
+    }
+  };
+
+  // ////////////////// FullInfo
+  const fullInfoValidator = () => {
+    if (formCreateValues.fullInfo.length <= 0 ) {
+      setErrors(state => ({
+        ...state,
+        fullInfo: "Полето е  задължително",
+      }));
+    } else {
+      if (errors.title) {
+        setErrors(state => ({
+          ...state,
+          fullInfo: "",
+        }));
+      }
+    }
+  };
+
+
+  ////// Image Validator 
+
+  function ImageValid(image){
+    const regexImage = /^https?:\/\/.+$/gi;
+    return regexImage.test(image)
+  }
+
+  const imageValidator = () => {
+    if(!ImageValid(formCreateValues.image)){
+      setErrors(state => ({
+        ...state,
+        image: 'Изпратеният адрес за снимка трябва да започва  с http:// или https://',
+      }))
+    }
+    else{
+      if(errors.image) {
+        setErrors(state => ({
+          ...state,
+          image: ''
+        }));
+      }
+    }
+
+  }
+
   return (
     <>
       <div className={styles.container}>
@@ -80,7 +167,11 @@ export default function CreateNews() {
               id="title"
               value={formCreateValues.title}
               onChange={handleChange}
+              onBlur={titleValidator}
             />
+             {errors.title && (
+                  <p className={styles.errorMessage}>{errors.title}</p>
+                )}
           </label>
           <br />
 
@@ -93,7 +184,11 @@ export default function CreateNews() {
               id="newsInfo"
               value={formCreateValues.newsInfo}
               onChange={handleChange}
+              onBlur={newsInfoValidator}
             />
+            {errors.newsInfo && (
+                  <p className={styles.errorMessage}>{errors.newsInfo}</p>
+                )}
           </label>
           <br />
 
@@ -107,7 +202,11 @@ export default function CreateNews() {
               id="fullInfo"
               value={formCreateValues.fullInfo}
               onChange={handleChange}
+              onBlur={fullInfoValidator}
             />
+            {errors.fullInfo && (
+                  <p className={styles.errorMessage}>{errors.fullInfo}</p>
+                )}
           </label>
           <br /> 
 
@@ -119,7 +218,11 @@ export default function CreateNews() {
               id="image"
               value={formCreateValues.image}
               onChange={handleChange}
+              onBlur={imageValidator}
             />
+            {errors.image && (
+                  <p className={styles.errorMessage}>{errors.image}</p>
+                )}
           </label>
           <br />
 
