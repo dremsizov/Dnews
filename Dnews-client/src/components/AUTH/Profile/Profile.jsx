@@ -4,23 +4,8 @@ import {  useContext, useState, useEffect } from "react";
 import {AuthContext} from "../../../contexts/AuthContext"
 
 import * as newsService from "../../../services/newsService"
-// import * as purchaseService from "../../../services/purchaseApi"
-
 import NewsItem from "../../NewsItemCards/NewsCardCatalog/NewsItem";
 
-// import Modal from "react-modal";
-// import { Link, useNavigate, useParams } from "react-router-dom";
-
-// import * as userService from "../../../services/userService"
-
-// Modal.setAppElement("#root");
-
-// const formUserInitialState = {
-//     firstName: "",
-//     lastName: "",
-//     email: "",
-//     username: "",
-//   };
 
 export default function Profile () {
     document.title = 'Профил';
@@ -62,7 +47,7 @@ export default function Profile () {
                 <label htmlFor="">Потребителско име:</label>
                 <input type="text" value={auth.username} disabled/>
                 </div>
-                <div className={styles.buttons}>
+                {/* <div className={styles.buttons}>
             <button
               className={styles.createBtnEdit}
               type="submit"
@@ -70,7 +55,7 @@ export default function Profile () {
             >
               Промени своите профил данни
             </button>
-            </div>
+            </div> */}
             </div>
             </div>
             <div className={styles.profileNewsCreate}>
