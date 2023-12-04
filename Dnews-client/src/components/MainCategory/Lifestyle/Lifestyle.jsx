@@ -6,8 +6,8 @@ import * as newsService from '../../../services/newsService'
 
 import NewsCard from "../../NewsItemCards/NewsCardCatalog/NewsItem";
 
-
 export default function LifeStyleNews(){
+    document.title = 'Любопитно';
 
     const [lifeStyle, setLifeStyleNews] = useState([]);
     
