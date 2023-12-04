@@ -17,6 +17,7 @@ const formEditInitialState = {
 };
 
 export default function EditNews() {
+  document.title = 'Редакция на новина';
   const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
 
