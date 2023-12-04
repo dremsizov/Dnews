@@ -8,6 +8,7 @@ import NewsCard from "../../NewsItemCards/NewsCardCatalog/NewsItem";
 
 
 export default function PoliticsNews(){
+    document.title = 'Политика';
 
     const [politics, setPoliticsNews] = useState([]);
     
