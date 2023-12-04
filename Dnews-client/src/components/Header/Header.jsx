@@ -7,9 +7,13 @@ import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import * as authApi from '../../services/userService';
 
+
+
 export default function HeaderComponent() {
   const navigate = useNavigate();
   const { auth, setAuth } = useContext(AuthContext);
+
+
 
   async function logoutHandler(e) {
     e.preventDefault();
@@ -42,9 +46,11 @@ export default function HeaderComponent() {
           </div>
         </div>
         <div className={styles["icons"]}>
+
+
           <div className={styles["searchBTN"]}>
             <Link to="/search">
-            <i className="fa-solid fa-magnifying-glass"></i>
+              <i className="fa-solid fa-magnifying-glass"></i>
             </Link>
           </div>
 
