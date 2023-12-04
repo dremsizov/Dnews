@@ -17,6 +17,7 @@ const formCreateInitialState = {
 };
 
 export default function CreateNews() {
+  document.title = 'Създаване на новина';
   const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
   const [formCreateValues, setFormCreateValues] = useState(
