@@ -21,6 +21,7 @@ const regFormInitialState = {
 };
 
 export default function Register() {
+  document.title = 'Регистрация';
   const navigate = useNavigate();
 
   const {setAuth} = useContext(AuthContext);
