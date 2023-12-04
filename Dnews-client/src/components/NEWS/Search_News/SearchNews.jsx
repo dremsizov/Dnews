@@ -10,6 +10,7 @@ const initialSearchVaelue = {
 }
 
 export default function SearchNews() {
+    document.title = 'Търсене';
     const [news, setNews] = useState([]);
     const[searchValue, setSearchValue] = useState(initialSearchVaelue);
 
