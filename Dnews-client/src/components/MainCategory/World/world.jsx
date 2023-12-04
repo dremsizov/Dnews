@@ -8,7 +8,7 @@ import NewsCard from "../../NewsItemCards/NewsCardCatalog/NewsItem";
 
 
 export default function WorldNews(){
-
+    document.title = 'Свят';
     const [worlds, setWorldsNews] = useState([]);
     
     useEffect(() => {
