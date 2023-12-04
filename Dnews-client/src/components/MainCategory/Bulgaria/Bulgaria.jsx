@@ -8,6 +8,7 @@ import NewsCard from "../../NewsItemCards/NewsCardCatalog/NewsItem";
 
 
 export default function BulgariaNews(){
+    document.title = 'България';
 
     const [bgNews, setBgNews] = useState([]);
     
