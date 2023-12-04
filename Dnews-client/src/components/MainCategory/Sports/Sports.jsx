@@ -8,7 +8,7 @@ import NewsCard from "../../NewsItemCards/NewsCardCatalog/NewsItem";
 
 
 export default function SportsNews(){
-
+    document.title = 'Спорт';
     const [sports, setSportsNews] = useState([]);
     
     useEffect(() => {
