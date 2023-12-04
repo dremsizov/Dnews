@@ -23,6 +23,7 @@ import NewsItem from "../../NewsItemCards/NewsCardCatalog/NewsItem";
 //   };
 
 export default function Profile () {
+    document.title = 'Профил';
 
     const { auth } = useContext(AuthContext);
     const [NewsOwner, setNewsOwner] = useState([]);
