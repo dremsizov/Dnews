@@ -4,10 +4,9 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
 }
-
 .loginForm{
+        display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
@@ -19,114 +18,75 @@
     padding: 5rem 25rem;
 }
 
-.wrapper{
-    display: flex;
-    flex-direction: column;
+
+.workingSpace {
+    background-color: rgba(147, 145, 145, 0.5);
+    border-radius: 2rem;
+     padding: 2.5rem;
+}
+
+.title{
     text-align: center;
-    max-width: 55rem;
-    border-radius: 3rem;
-    background: rgba(0,0,0,0.2);
-    box-shadow: 0 15px 20px rgba(0,0,0,0.6);
-    overflow: hidden;
-
-  
+    font-size: 4rem;
+    margin: 1rem;
+    padding-bottom: 1rem;
 }
 
-.formlog{
+.formPlace{
     display: flex;
-    flex-direction: column;
-    margin-top: 2rem;
-    padding:0 4rem;
+    justify-content: center;
 }
 
-.emailInput, .passwordInput{
+.emailIntput{
     display: flex;
-    text-align: center;
+    font-size: 3rem;
+    gap:1rem;
+    padding-bottom: 4rem;
+        
 }
-
 .formInput{
-    font-size: 2rem;
-    padding: 0.2em 1em 0.2em 1em;
+    font-size: 3rem;
+    border-radius: 2rem;
+    background-color: inherit;
+    width: 25rem;
+    padding-left: 0.8rem;
+       
+}
+::placeholder{
+    text-align: center
 }
 
-.formInput:focus{
-    outline: none;
+.passIntput{
+    display: flex;
+    font-size: 3rem;
+    gap:1rem;
+    padding-bottom: 4rem;
 }
-
 .showHideBtn{
     cursor: pointer;
 }
-
-.wrapper h2{
-    font-size: 3rem;
+.signUp {
     text-align: center;
-    padding-bottom: 1rem;
-    font-style: italic;   
-    
-}
-
-.wrapper .email{
-    width:100%;
-    height: 2rem;
-    margin: 4rem 0;
-    }
-.wrapper .pass{
-    width:100%;
-    height: 2rem;
-    margin: 4rem 0;
-    }
-
-.email input{
-    width: 100%;
-    height: 3rem;
-    border-radius: 4rem;
-}
-.pass input{
-    width: 100%;
-    height: 3rem;
-    border-radius: 4rem;
-}
+    padding-top: 3rem;
+    padding: 1rem;  
+   }
 
 
-
-
-
-.email i {
-    position: absolute;
-    right: 35rem;
-    top: 34.8rem;
-    transform: translateY(-80%);
-    font-size: 2.5rem;
-}
-.pass i {
-    position: absolute;
-    right: 35rem;
-    top: 40.8rem;
-    transform: translateY(-80%);
-    font-size: 2.5rem;
-}
- 
-    .signUp {
-     text-align: center;
-     padding-top: 3rem;
+   .signUp button{
+    font-size: 2rem;
+    width: 25rem;
+    text-align: center;
+    border-radius: 3rem;
+    cursor: pointer; 
+        }
+  
+        .loginNav{
+            padding-top: 2rem;
+        }
      
-                 
-    }
-    .signUp input{
-       font-size: 2rem;
-       width: 25rem;
-       text-align: center;
-       border-radius: 3rem;
-       cursor: pointer; 
-           }
 
-         
-    ::placeholder {
-        font-size: 2rem;
-        text-align:center
-    }
-
-
-
- 
+.errorMessage{
+    color: rgb(191, 12, 12);
+    font-size: 1.2rem;
+}
 

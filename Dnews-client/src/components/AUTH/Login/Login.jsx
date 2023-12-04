@@ -45,23 +45,6 @@ export default function Login() {
     };
 
 
-
-  // const changeHandler = (e) => {
-  //   let value = '';
-  //   if (e.target.type) {
-  //     value = e.target.value;
-  //   }
-
-  //   setFormValues(state => ({
-  //     ...state,
-  //     [e.target.name]: value,
-  //   }));
-  // };
-
-
-
-
-
   function validateEmail(email) {
     const emailRegex = /^[a-zA-Z]+@[a-zA-Z]+\.[a-zA-Z]+$/;
     return emailRegex.test(email);
@@ -103,19 +86,28 @@ export default function Login() {
 
   return (
     <>
-      <section className={styles["loginForm"]}>
         <div className={styles["wrapper"]}>
+      <section className={styles["loginForm"]}>
+
+        <div className={styles.workingSpace}>
+
+
+          <div className={styles.title}>
+          <h2 className={styles["title"]}>Влез в своя профил</h2>
+          </div>
+
+            <div className={styles.formPlace}>
 
           <form id="request" method='POST'
             className={styles["formlog"]}
             onSubmit={onSubmit}
           >
-            <h2 className={styles["title"]}>Влез в своя профил</h2>
-
-            <div className={styles["email"]}>
-              <div className={styles["emailIntput"]}>
-              
-              <input
+            {errors.email && (
+              <p className={styles.errorMessage}>{errors.email}</p>
+              )}
+         <div className={styles["emailIntput"]}>
+                <div>
+                <input
                 type="text"
                 className={styles.formInput}
                 placeholder="мейл"
@@ -126,16 +118,16 @@ export default function Login() {
                 value={values.email}
                 onBlur={emailValidator}
               />
-              <i className="fa-solid fa-at"></i>
-            {errors.email && (
-                    <p className={styles.errorMessage}>{errors.email}</p>
-                  )}
-
+                </div>
+              <div>
+              <i className="fa-solid fa-at icon"></i>
               </div>
-              
-             
-            </div>
+                </div>            
+            
 
+{errors.password && (
+                    <p className={styles.errorMessage}>{errors.password}</p>
+                  )}
             <div className={styles["pass"]}>
               <div className={styles["passIntput"]}>
 
@@ -149,34 +141,31 @@ export default function Login() {
                 onChange={onChange}
                 value={values.password}
                 onBlur={passwordValidator}
-              />
+                />
 
 <div
                                 onClick={SeePasswordTogle}
                                 className={styles.showHideBtn}>
                                 {seePassword ? (
                                   <i className="fa-regular fa-eye"></i>
-                                ) : (
-                                  <i className="fa-solid fa-eye-slash"></i>
-                                )}
+                                  ) : (
+                                    <i className="fa-solid fa-eye-slash"></i>
+                                    )}
                             </div>
 
-{errors.password && (
-                    <p className={styles.errorMessage}>{errors.password}</p>
-                  )}
+
               </div>
-              
-               
-              
+ 
             </div>
+         
 
             <div className={styles["signUp"]}>
               <button type="submit"
               
               disabled={(Object.values(errors).some(x => x)
                 || (Object.values(values).some(x => x == '')))}
-              
-             >
+                
+                >
               Влез
              </button>
 
@@ -189,8 +178,10 @@ export default function Login() {
                
             </div>
           </form>
-        </div>
+                  </div>
+               </div>
       </section>
+        </div>
     </>
   );
 }
