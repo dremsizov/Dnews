@@ -7,6 +7,7 @@ import NewsItem from "../../NewsItemCards/NewsCardCatalog/NewsItem";
 
 
 export default function AllNews() {
+    document.title = 'Всички новини';
 
     const [allNews,setAllNews] = useState([]);
 
