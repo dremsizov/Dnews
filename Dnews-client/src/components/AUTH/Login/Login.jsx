@@ -16,6 +16,7 @@ const formInitialData = {
 };
 
 export default function Login() {
+  document.title = 'Вход';
     const navigate = useNavigate();
 
     const [seePassword, setSeePassword] = useState(false)
