@@ -8,6 +8,7 @@ import NewsCard from "../../NewsItemCards/NewsCardCatalog/NewsItem";
 
 
 export default function EconomicsNews(){
+    document.title = 'Икономика';
 
     const [economics, setEconomicsNews] = useState([]);
     
