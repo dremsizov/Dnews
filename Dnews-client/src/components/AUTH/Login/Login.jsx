@@ -1,50 +1,48 @@
+import { Link, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
-import { Link } from 'react-router-dom'
-
-
 
 import useForm from "../../../Hooks/useForm";
-import {useNavigate } from 'react-router-dom';
-
 import styles from "../../AUTH/Login/Login.module.css";
-import * as userService from "../../../services/userService"
-import {AuthContext} from "../../../contexts/AuthContext";
+import * as userService from "../../../services/userService";
+import { AuthContext } from "../../../contexts/AuthContext";
 
 const formInitialData = {
-    email: '',
-    password: '',
+  email: "",
+  password: "",
 };
 
 export default function Login() {
-  document.title = 'Вход';
-    const navigate = useNavigate();
+  document.title = "Вход";
 
-    const [seePassword, setSeePassword] = useState(false)
-    const {setAuth} = useContext(AuthContext);
-    
-    const [formValues, setFormValues] = useState(formInitialData)
-    const [errors, setErrors] = useState({});
+  const navigate = useNavigate();
 
+  const [seePassword, setSeePassword] = useState(false);
+  const { setAuth } = useContext(AuthContext);
 
-    const resetFormHandler = () => {
-      setFormValues(formInitialData);
-    };
+  const [formValues, setFormValues] = useState(formInitialData);
+
+  const [errors, setErrors] = useState({});
 
 
-    const submitHandler = (values) => {
- 
-      userService.login(values)
-        .then(account => {
-          setAuth(account);
-          navigate('/');
-  
-          console.log(account);
-        })
-        .catch((error) => console.log(error.message))
-  
-      resetFormHandler();
-    };
 
+  const resetFormHandler = () => {
+    setFormValues(formInitialData);
+  };
+
+  const submitHandler = (values) => {
+    userService
+      .login(values)
+      .then((account) => {
+        setAuth(account);
+        navigate("/");
+
+       })
+      .catch((error) => console.log(error.message));
+
+    resetFormHandler();
+  };
+
+  ///////////////////////////////////////////////////////// Validations
 
   function validateEmail(email) {
     const emailRegex = /^[a-zA-Z]+@[a-zA-Z]+\.[a-zA-Z]+$/;
@@ -53,136 +51,132 @@ export default function Login() {
 
   const emailValidator = () => {
     if (!validateEmail(values.email)) {
-      setErrors(state => ({
+      setErrors((state) => ({
         ...state,
-        email: 'Посоченият от вас мейл адрес не е във валиден формат',
+        email: "Посоченият от вас мейл адрес не е във валиден формат",
       }));
     } else {
       if (errors.email) {
-        setErrors(state => ({ ...state, email: '' }));
+        setErrors((state) => ({ ...state, email: "" }));
       }
     }
   };
 
   const passwordValidator = () => {
     if (values.password.length < 6) {
-      setErrors(state => ({
+      setErrors((state) => ({
         ...state,
-        password: 'Паролата трябва да бъде минимум 6 символа!',
+        password: "Паролата трябва да бъде минимум 6 символа!",
       }));
     } else {
       if (errors.password) {
-        setErrors(state => ({ ...state, password: '' }));
+        setErrors((state) => ({ ...state, password: "" }));
       }
     }
   };
 
-
   const { values, onSubmit, onChange } = useForm(submitHandler, formValues);
-
 
   const SeePasswordTogle = () => {
     setSeePassword(!seePassword);
-};
+  };
+
+
+
+
+
 
   return (
     <>
-        <div className={styles["wrapper"]}>
-      <section className={styles["loginForm"]}>
-
-        <div className={styles.workingSpace}>
-
-
-          <div className={styles.title}>
-          <h2 className={styles["title"]}>Влез в своя профил</h2>
-          </div>
+      <div className={styles["wrapper"]}>
+        <section className={styles["loginForm"]}>
+          <div className={styles.workingSpace}>
+            <div className={styles.title}>
+              <h2 className={styles["title"]}>Влез в своя профил</h2>
+            </div>
 
             <div className={styles.formPlace}>
-
-          <form id="request" method='POST'
-            className={styles["formlog"]}
-            onSubmit={onSubmit}
-          >
-            {errors.email && (
-              <p className={styles.errorMessage}>{errors.email}</p>
-              )}
-         <div className={styles["emailIntput"]}>
-                <div>
-                <input
-                type="text"
-                className={styles.formInput}
-                placeholder="мейл"
-                name="email"
-                id="email"
-                required
-                onChange={onChange}
-                value={values.email}
-                onBlur={emailValidator}
-              />
-                </div>
-              <div>
-              <i className="fa-solid fa-at icon"></i>
-              </div>
-                </div>            
-            
-
-{errors.password && (
-                    <p className={styles.errorMessage}>{errors.password}</p>
-                  )}
-            <div className={styles["pass"]}>
-              <div className={styles["passIntput"]}>
-
-              <input
-                className={styles.formInput}
-                type={seePassword ? 'text' : 'password'}
-                id="password"
-                placeholder="парола"
-                name="password"
-                required
-                onChange={onChange}
-                value={values.password}
-                onBlur={passwordValidator}
-                />
-
-<div
-                                onClick={SeePasswordTogle}
-                                className={styles.showHideBtn}>
-                                {seePassword ? (
-                                  <i className="fa-regular fa-eye"></i>
-                                  ) : (
-                                    <i className="fa-solid fa-eye-slash"></i>
-                                    )}
-                            </div>
-
-
-              </div>
- 
-            </div>
-         
-
-            <div className={styles["signUp"]}>
-              <button type="submit"
-              
-              disabled={(Object.values(errors).some(x => x)
-                || (Object.values(values).some(x => x == '')))}
-                
-                >
-              Влез
-             </button>
-
-             <div className={styles.loginNav}>
-                  <p>
-                    Все още нямате регистрация?
-                    <Link to='/register'>Кликни тук</Link>
-                  </p>
-             </div>
-               
-            </div>
-          </form>
+              <form
+                id="request"
+                method="POST"
+                className={styles["formlog"]}
+                onSubmit={onSubmit}
+              >
+                {errors.email && (
+                  <p className={styles.errorMessage}>{errors.email}</p>
+                )}
+                <div className={styles["emailIntput"]}>
+                  <div>
+                    <input
+                      type="text"
+                      className={styles.formInput}
+                      placeholder="мейл"
+                      name="email"
+                      id="email"
+                      required
+                      onChange={onChange}
+                      value={values.email}
+                      onBlur={emailValidator}
+                    />
                   </div>
-               </div>
-      </section>
-        </div>
+                  <div>
+                    <i className="fa-solid fa-at icon"></i>
+                  </div>
+                </div>
+
+                {errors.password && (
+                  <p className={styles.errorMessage}>{errors.password}</p>
+                )}
+                <div className={styles["pass"]}>
+                  <div className={styles["passIntput"]}>
+                    <input
+                      className={styles.formInput}
+                      type={seePassword ? "text" : "password"}
+                      id="password"
+                      placeholder="парола"
+                      name="password"
+                      required
+                      onChange={onChange}
+                      value={values.password}
+                      onBlur={passwordValidator}
+                    />
+
+                    <div
+                      onClick={SeePasswordTogle}
+                      className={styles.showHideBtn}
+                    >
+                      {seePassword ? (
+                        <i className="fa-regular fa-eye"></i>
+                      ) : (
+                        <i className="fa-solid fa-eye-slash"></i>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+                <div className={styles["signUp"]}>
+                  <button
+                    type="submit"
+                    disabled={
+                      Object.values(errors).some((x) => x) ||
+                      Object.values(values).some((x) => x == "")
+                    }
+                  >
+                    Влез
+                  </button>
+
+                  <div className={styles.loginNav}>
+                    <p>
+                      Все още нямате регистрация?
+                      <Link to="/register">Кликни тук</Link>
+                    </p>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </section>
+      </div>
     </>
   );
 }
