@@ -1,5 +1,5 @@
 import styles from "../Search_News/SearchNews.module.css"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 
 import * as newsService from "../../../services/newsService";
 
@@ -11,63 +11,111 @@ const initialSearchVaelue = {
 
 export default function SearchNews() {
     document.title = 'Търсене';
+
     const [news, setNews] = useState([]);
     const[searchValue, setSearchValue] = useState(initialSearchVaelue);
-
-        useEffect(() =>{
-            newsService.getAll()
-            .then(resutl => setNews(resutl.filter(news=>news.newsInfo
-                .toLowerCase()
-                .includes(searchValue.search.toLowerCase()))))
-                .catch(err => console.log(err))
-            
-        }, [searchValue]);
-
-        const onChangeHandler = (e) => {
-            let value = '';
-            if (e.target.type) {
-                value = e.target.value;
-            }
+    const [searchPerformed, setSearchPerformed] = useState(false);
+    const [errors, setErrors] = useState({});
     
-            setSearchValue(state => ({
-                ...state,
-                [e.target.name]: value,
-            }));
 
+
+    const onChange = (event) => {
+        setSearchValue(state => ({
+            ...state,
+            [event.target.name]: event.target.value,
+        }));
+    };
+
+    function onSubmit(e) {
+        e.preventDefault();
+
+       newsService.getAll()
+            .then(result => {
+                const searchNews = result.filter(news =>
+                    news.newsInfo.toLowerCase().includes(searchValue.search.toLowerCase()));
+
+                setNews(searchNews);
+
+                if (searchNews.length === 0) {
+                    setSearchPerformed(true);
+                } else {
+                    setSearchPerformed(false);
+                }
+                })
+                .catch(error => console.log(error));
+            }
+
+         const inputValidator = () => {
+        if (searchValue.search.length < 1) {
+            setErrors(state => ({ ...state, search: 'The search field cannot be empty!' }));
+        } else {
+            if (errors.search) {
+                setErrors(state => ({ ...state, search: '' }));
+            }
         }
+    };
 
 
-    return(
-<>
+    
+    // useEffect(() =>{
+    //         newsService.getAll()
+    //         .then(resutl => setNews(resutl.filter(news=>news.newsInfo
+    //             .toLowerCase()
+    //             .includes(searchValue.search.toLowerCase())
+    //             )))
+    //             .catch(err => console.log(err))
+            
+    //     }, [searchValue]);
+
+    //     const onChangeHandler = (e) => {
+    //         let value = '';
+    //         if (e.target.type) {
+    //             value = e.target.value;
+    //         }
+    
+    //         setSearchValue(state => ({
+    //             ...state,
+    //             [e.target.name]: value,
+    //         }));
+
+    //     }
+
+
+    return (
+
+<div>
 
         <div className={styles.searchContainer}>
-            <form action="POST">
+            
+            <div>
 
             <h1> Намери своята новина</h1>
-        <input type="text" name="search" value={searchValue.search} className={styles.searchInput} placeholder="Enter your search..."
-        onChange={onChangeHandler} />
+            </div>
+        
+            <form>
+        <input type="text" name="search" value={searchValue.search} className={styles.searchInput} placeholder="Enter your search..." onChange={onChange} onBlur={inputValidator}/>
+        {errors.search && (<p className={styles['errorMessage']}>{errors.search}</p>)}
+        <button className={styles['search-button']} disabled={Object.values(errors).some(x=>x) || (Object.values(searchValue).some(x => x == ''))} type="submit" onClick={onSubmit}>
+                        <i className="fa-solid fa-magnifying-glass"></i>
+                    </button>
             </form>
-
-                <div>
+            </div>
                     {news.length > 0
-                    ?(
-                        <>
-                        {news.map(newsCard => (
-                            <NewsItem
-                            {...newsCard}
-                            />
-                        ))}
-                        </>
-                    )
-                :
-            <div>
-                <p>  Няма</p>
+                    ?
+                    <div> 
+                         {news.map(newsCard => (
+                            <NewsItem key={newsCard._id} {...newsCard} />
+                            ))}
+                        </div>
+                   
+                           :
+                        <div>
+                             {searchPerformed && (<p> Няма намерени съвпадения</p>)}
+                
                 </div>
                 }
-                </div>
-     
-        </div>
-</>
-
-    );
-}
+    </div>
+          
+      );
+            }
+            

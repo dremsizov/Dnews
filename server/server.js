@@ -1465,6 +1465,7 @@
       // 	hashedPassword: "fac7060c3e17e6f151f247eacb2cd5ae80b8c36aedb8764e18a41bbdc16aa302"
       // }
     },
+    
     sessions: {},
   };
 
@@ -1517,9 +1518,9 @@
         _updatedOn: 1615545143015,
         _id: "35c62d76-8152-4626-8712-eeb96381bea8",
       },
-    },purchases:{
-           
     },
+    purchases:{},
+    likes: {},
 
 
 
