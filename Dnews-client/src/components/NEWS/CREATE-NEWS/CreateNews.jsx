@@ -86,14 +86,14 @@ export default function CreateNews() {
     if (formCreateValues.newsInfo.length < 30) {
       setErrors(state => ({
         ...state,
-        newsInfo: "Заглавието трябва да е повече от 30 символа!",
+        newsInfo: "Текстът трябва да е повече от 30 символа!",
       }));
     } 
 
     if (formCreateValues.newsInfo.length > 120) {
       setErrors(state => ({
         ...state,
-        newsInfo: "Заглавието не трябва да е повече от 120 символа!",
+        newsInfo: "Текстът не трябва да е повече от 120 символа!",
       }));
     } 
           
@@ -121,6 +121,12 @@ export default function CreateNews() {
           fullInfo: "",
         }));
       }
+      if (formCreateValues.fullInfo.length < 30) {
+        setErrors(state => ({
+          ...state,
+          fullInfo: "Текстът трябва да е повече от 30 символа!",
+        }));
+      } 
     }
   };
 
