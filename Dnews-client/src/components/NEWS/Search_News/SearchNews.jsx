@@ -32,7 +32,7 @@ export default function SearchNews() {
        newsService.getAll()
             .then(result => {
                 const searchNews = result.filter(news =>
-                    news.newsInfo.toLowerCase().includes(searchValue.search.toLowerCase()));
+                    news.fullInfo.toLowerCase().includes(searchValue.search.toLowerCase()));
 
                 setNews(searchNews);
 
