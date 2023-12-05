@@ -20,7 +20,7 @@ export default function Home() {
     <>
       <div className={styles.newsContainer}>
         {newsSeven.map((newscard) => (
-          <HomeNewsCard {...newscard} />
+          <HomeNewsCard key={newscard.id} {...newscard} />
         ))}
       </div>
     </>

@@ -19,6 +19,7 @@ export default function HomeNewsCard({
               <img src={image} alt="CardPic" />
             </Link>
           </div>
+
           <div className={styles["cardNewsInfo"]}>
             <h3>{title}</h3>
             <p className={styles["publicDate"]}>

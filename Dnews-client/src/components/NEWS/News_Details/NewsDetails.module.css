@@ -32,8 +32,18 @@ gap: 1rem;
   border-radius: 3rem; 
   overflow: hidden;
   text-align: center;
-  object-fit: contain;
+  object-fit: cover;
   }
+
+  .imageContainer img {
+    
+    height: 20rem;
+    
+   
+   
+    
+  
+    }
 
 .textTitleContainer h2 {
     text-align: center;
