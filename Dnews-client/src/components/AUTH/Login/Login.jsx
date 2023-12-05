@@ -102,11 +102,9 @@ export default function Login() {
                 className={styles["formlog"]}
                 onSubmit={onSubmit}
               >
-                {errors.email && (
-                  <p className={styles.errorMessage}>{errors.email}</p>
-                )}
-                <div className={styles["emailIntput"]}>
-                  <div>
+                
+                <div className={styles["textIntput"]}>
+                  <div className={styles.inputWrapper}>
                     <input
                       type="text"
                       className={styles.formInput}
@@ -118,17 +116,17 @@ export default function Login() {
                       value={values.email}
                       onBlur={emailValidator}
                     />
-                  </div>
-                  <div>
                     <i className="fa-solid fa-at icon"></i>
+                    {errors.email && (
+                  <p className={styles.errorMessage}>{errors.email}</p>
+                )}
                   </div>
+                  
                 </div>
 
-                {errors.password && (
-                  <p className={styles.errorMessage}>{errors.password}</p>
-                )}
+                
                 <div className={styles["pass"]}>
-                  <div className={styles["passIntput"]}>
+                  <div className={`${styles["textIntput"]} ${styles['inputWrapper']}`}>
                     <input
                       className={styles.formInput}
                       type={seePassword ? "text" : "password"}
@@ -151,6 +149,9 @@ export default function Login() {
                         <i className="fa-solid fa-eye-slash"></i>
                       )}
                     </div>
+                    {errors.password && (
+                  <p className={styles.errorMessage}>{errors.password}</p>
+                )}
                   </div>
                 </div>
 

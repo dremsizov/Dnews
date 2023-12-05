@@ -14,9 +14,14 @@ export default function NewsCardLast3({
 {
 
     const handleReadMoreClick = () => {
-        window.location.reload();
-        window.scrollTo(0, 0);
-      };
+         window.scrollTo({                                                                              
+            top: 0,
+            behavior: 'smooth',
+        });
+    };
+
+
+      
 
     return (
 

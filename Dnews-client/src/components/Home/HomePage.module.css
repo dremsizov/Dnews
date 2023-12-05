@@ -1,6 +1,8 @@
 .newsContainer{
 margin: 2rem;
 display: flex;
+justify-content: space-between;
 flex-wrap: wrap;
+padding-inline: 4rem;
 }
 

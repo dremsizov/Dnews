@@ -44,7 +44,8 @@
 .newsLogo {
   position: relative;
 }
-.logoPicture,
+
+/* .logoPicture,
 .logoText {
   transition: transform 2s ease;
 }
@@ -55,7 +56,37 @@
 
 .newsLogo:hover .logoText {
   opacity: 0;
+} */
+
+
+
+@keyframes slideLogo {
+  0% {
+    transform: translateX(0);
+    
+  }
+  
+  100% {
+    transform: translateX(370%);
+    
+  }
 }
+
+.logoPicture,
+.logoText {
+  transition: opacity 0.5s ease;
+}
+
+.newsLogo:hover .logoText {
+  opacity: 0;
+}
+
+.newsLogo:hover .logoPicture {
+  animation: slideLogo 2s ease forwards; 
+}
+
+
+
 
 .logoText {
   position: relative;

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 import styles from "../Home/HomeNewsCard.module.css/";
 import formatData from "../utils/formatDataUtils";
