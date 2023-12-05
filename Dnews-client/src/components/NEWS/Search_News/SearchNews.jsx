@@ -47,7 +47,7 @@ export default function SearchNews() {
 
          const inputValidator = () => {
         if (searchValue.search.length < 1) {
-            setErrors(state => ({ ...state, search: 'The search field cannot be empty!' }));
+            setErrors(state => ({ ...state, search: 'Полето не може да бъде празно!' }));
         } else {
             if (errors.search) {
                 setErrors(state => ({ ...state, search: '' }));
@@ -87,18 +87,24 @@ export default function SearchNews() {
 
         <div className={styles.searchContainer}>
             
-            <div>
-
+            <div className={styles.searchBox}>
+                <div>
             <h1> Намери своята новина</h1>
-            </div>
-        
+                </div>
+            <div>
             <form>
+                
         <input type="text" name="search" value={searchValue.search} className={styles.searchInput} placeholder="Enter your search..." onChange={onChange} onBlur={inputValidator}/>
-        {errors.search && (<p className={styles['errorMessage']}>{errors.search}</p>)}
+                
+                
         <button className={styles['search-button']} disabled={Object.values(errors).some(x=>x) || (Object.values(searchValue).some(x => x == ''))} type="submit" onClick={onSubmit}>
                         <i className="fa-solid fa-magnifying-glass"></i>
                     </button>
+        
             </form>
+        {errors.search && (<p className={styles['errorMessage']}>{errors.search}</p>)}
+                </div>        
+            </div>
             </div>
                     {news.length > 0
                     ?
@@ -109,7 +115,7 @@ export default function SearchNews() {
                         </div>
                    
                            :
-                        <div>
+                        <div className={styles.NoFoundSearch}>
                              {searchPerformed && (<p> Няма намерени съвпадения</p>)}
                 
                 </div>

@@ -5,10 +5,9 @@ body {
 
 .searchContainer {
     text-align: center;
-    background-color: #fff;
-    padding: 20px;
+    padding: 3rem 18rem 8rem 18rem;;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    
 }
 
 h1 {
@@ -37,4 +36,64 @@ h1 {
 
 .searchButton:hover {
     background-color: #45a049;
+}
+
+.searchBox{
+    width: auto;
+    border-radius: 2rem;
+    background-color: rgba(147, 145, 145, 0.2);
+    border: 1px solid black;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 1rem;
+    gap: 2rem;
+}
+
+.searchBox form{
+display: flex;
+gap: 1em;
+}
+.searchBox input{
+    font-size: 2rem;
+}
+
+.searchBox h1{
+    font-size: 2rem;
+}
+
+.search-button i{
+    font-size: 2rem;
+    cursor: pointer;
+    
+}
+
+.errorMessage{
+    color: red;
+    font-size: 1.2rem;
+    font-style: italic;
+}
+
+button i{
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.search-button {
+     border: none;
+    background-color: transparent; 
+    cursor: pointer;
+    font-size: 16px;
+}
+
+
+.search-button i {
+    font-size: 2rem;
+}
+
+.NoFoundSearch {
+    font-size: 2rem;
+    text-align: center;
+    margin: 10rem;
 }
