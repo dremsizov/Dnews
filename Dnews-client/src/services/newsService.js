@@ -2,6 +2,8 @@ import * as request from '../services/apiService'
 
 const apiURL = "http://localhost:3030/data/news";
 
+const apiLikeUrl = "http://localhost:3030/data/likes"
+
 ////////////////////////////// GET ALL REQUEST ////////////////////////
 export const getAll = async () => {
   
@@ -18,14 +20,6 @@ export const createNews = async (newsData) => {
 
     return result;
 
-    // const body = {
-    //     title: newsData.title,
-    //     newsInfo: newsData.newsInfo,
-    //     type: newsData.type,
-    //     image: newsData.image,
-    //     _createdOn: new Date().toISOString,
-    //     _updatedOn: new Date().toISOString,
-    // }
 }
 
 
@@ -42,6 +36,8 @@ export const editNews = async (newsID, newsData) => {
     const result = await request.put(`${apiURL}/${newsID}`, newsData);
     return result
 }
+
+
 
 
 
@@ -62,6 +58,18 @@ export const getLastTreeNews = async () => {
 
     return result;
 };
+
+
+
+//////////////////////////////////////////////// GET LAST 7 NEWS //////////////////////////////////////////
+
+export const getLastSevenNews = async () => {
+    const query = new URLSearchParams('offset=0&pageSize=7');
+    const result = await request.get(`${apiURL}?sortBy=_createdOn%20desc&${query}`);
+
+    return result;
+};
+
 
 
 
@@ -149,4 +157,40 @@ export const getAllAnalitics = async () => {
     return data;
 }
 
+//  Likes
+
+export const likeNews = async (newsID) => {
+    const result = await request.post(apiLikeUrl, newsID);
+
+    return result;
+
+}
+
+export const likeForNews = async (newsID) => {
+    const result = await request.get(`${apiLikeUrl}?where=newsID%3D%22${newsID}%22&distinct=_ownerId&count`);
+    return result
+}
+
+export const canLike = async (newsID, userID) => {
+    const result = await request.get(`${apiLikeUrl}?where=newsID%3D%22${newsID}%22%20and%20_ownerId%3D%22${userID}%22&count`);
+    return result
+}
+
+
+
+
+export const like = async (userID, newsID) => {
+    const result = await request.post(`${apiLikeUrl}`,userID, newsID);
+    return result
+}
+
+
+export const getAllLikes = async () => {
+  
+    const result = await request.get(apiLikeUrl);
+  
+    const data = Object.values(result);
+  
+    return data;
+  };
 

@@ -1,5 +1,7 @@
+/* eslint-disable react/prop-types */
 
 import { createContext } from 'react';
+
 import useLocalStorage from '../Hooks/useLocalStorage';
 
 

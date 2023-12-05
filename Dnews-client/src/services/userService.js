@@ -14,5 +14,5 @@ export const register = (registerData) =>
 export const logout = async () => {
   request.get(`${apiUrl}/logout`);
 
-  localStorage.removeItem("user");
+  localStorage.removeItem('user');
 };
