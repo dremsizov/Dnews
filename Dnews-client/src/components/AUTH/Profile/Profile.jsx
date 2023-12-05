@@ -4,7 +4,7 @@ import {  useContext, useState, useEffect } from "react";
 import {AuthContext} from "../../../contexts/AuthContext"
 
 import * as newsService from "../../../services/newsService"
-import NewsItem from "../../NewsItemCards/NewsCardCatalog/NewsItem";
+import NewsCardProfile from "../../NewsItemCards/NewsCardProfile/NewsCardProfile";
 
 
 export default function Profile () {
@@ -69,7 +69,7 @@ export default function Profile () {
                     <>
                     <div>
                         {NewsOwner.map(newsCard =>(
-                            <NewsItem
+                            <NewsCardProfile key={newsCard._id}
                             {...newsCard}
                          />
                         ))}
