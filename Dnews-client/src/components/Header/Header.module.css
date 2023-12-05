@@ -40,28 +40,6 @@
   padding: 0.2rem;
 }
 
-/* CSS animation */
-
-/* .newsLogo {
-    position: relative;
-  }
-
-  .logoPicture{
-    transition: transform 0.5s ease;
-  }
-
-  .logoPicture:hover {
-    animation: roll 3s forwards; 
-  }
-
-    @keyframes roll {
-    0% {
-      transform: translateX(0);;
-    }
-    100% {
-      transform: translateX(280%);;
-    }
-  } */
 
 .newsLogo {
   position: relative;
@@ -84,8 +62,12 @@
   right: 25%;
 }
 
-.searchBTN i, .login i, .create i, .logout i, .profile i{
+.searchBTN i, .login i, .create i, .logout i, .profile i, .register i{
 font-size: 2rem;
 color: black;
 cursor: pointer;
+}
+
+.profile i{
+font-weight: 600;
 }

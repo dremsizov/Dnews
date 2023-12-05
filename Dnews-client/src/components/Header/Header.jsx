@@ -58,19 +58,19 @@ export default function HeaderComponent() {
             <>
               <div className={styles["create"]}>
                 <Link to="/createNews">
-                  <i className="fa-solid fa-plus"></i>
+                  <i className="fa-solid fa-plus">Създай новина</i>
                 </Link>
               </div>
 
               <div className={styles["profile"]}>
                 <Link to="/profile">
-                  <i className="fa-regular fa-address-card"></i>
+                  <i className="fa-regular fa-address-card">Профил</i>
                 </Link>
               </div>
 
               <div className={styles["logout"]} onClick={logoutHandler}>
                 <Link to="/logout">
-                  <i className="fa-solid fa-arrow-right-from-bracket"></i>
+                  <i className="fa-solid fa-arrow-right-from-bracket">Изход</i>
                 </Link>
               </div>
             </>
@@ -78,13 +78,13 @@ export default function HeaderComponent() {
             <>
               <div className={styles["login"]}>
                 <Link to="/login">
-                  <i className="fa-solid fa-user-check"></i>
+                  <i className="fa-solid fa-user-check">Вход</i>
                 </Link>
               </div>
 
               <div className={styles["register"]}>
                 <Link to="/register">
-                  <i className="fa-solid fa-registered"></i>
+                  <i className="fa-solid fa-registered">Регистрация</i>
                 </Link>
               </div>
             </>
