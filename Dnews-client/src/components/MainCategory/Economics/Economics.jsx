@@ -1,5 +1,5 @@
 import styles from "../Economics/Economics.module.css"
-
+import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import * as newsService from '../../../services/newsService'
 
@@ -31,7 +31,7 @@ export default function EconomicsNews(){
                     <>
                     {
                         economics.map(newsCard => (
-                            <NewsCard
+                            <NewsCard key={newsCard._id}
                                 {...newsCard}
                                 />
 
@@ -41,7 +41,18 @@ export default function EconomicsNews(){
                     </>
                 )
                 :
-                <h3> Нямаме икономически новини</h3>
+                <div className={styles.NoNews}>
+                <div className={styles.NoNewsimg}>
+                    <img src="../../../public/assets/machine.jpg" />
+                </div>
+                <div className={styles.NoNewsText}>
+                <h3>Все още нямаме новини в тази категория!</h3>
+                    <Link to="/createNews">
+                <button className={styles.NoNewsBtn}>Създай 
+                </button>
+                    </Link>
+                </div>
+                </div>
 }
             </div>
         </div>

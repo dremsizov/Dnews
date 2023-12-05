@@ -29,7 +29,7 @@ export default function AllNews() {
      
         <div>
             {reversedNews.map(newscard =>(
-                <NewsItem 
+                <NewsItem key={newscard._id}
                 {...newscard}
                 />
                 ))}

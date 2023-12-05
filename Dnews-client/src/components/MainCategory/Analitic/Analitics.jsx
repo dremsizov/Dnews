@@ -1,6 +1,7 @@
 import styles from '../Analitic/Analitic.module.css';
 import { useEffect, useState } from 'react';
 import * as newsService from '../../../services/newsService'
+import { Link } from 'react-router-dom';
 
 
 import NewsCard from "../../NewsItemCards/NewsCardCatalog/NewsItem";
@@ -30,7 +31,7 @@ export default function AnaliticsNews(){
                     <>
                     {
                         analitics.map(newsCard => (
-                            <NewsCard
+                            <NewsCard key={newsCard._id}
                                 {...newsCard}
                                 />
 
@@ -40,7 +41,20 @@ export default function AnaliticsNews(){
                     </>
                 )
                 :
-                <h3> Още никой не е направил своя анализ!</h3>
+                <div className={styles.NoNews}>
+                <div className={styles.NoNewsimg}>
+                    <img src="../../../public/assets/machine.jpg" />
+                </div>
+                <div className={styles.NoNewsText}>
+                <h3>Все още нямаме новини в тази категория!</h3>
+                    <Link to="/createNews">
+                <button className={styles.NoNewsBtn}>Създай 
+                </button>
+                    </Link>
+                </div>
+                </div>
+ 
+               
 }
             </div>
         </div>

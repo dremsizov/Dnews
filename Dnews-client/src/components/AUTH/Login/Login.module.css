@@ -6,7 +6,7 @@
     box-sizing: border-box;
 }
 .loginForm{
-        display: flex;
+    display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;

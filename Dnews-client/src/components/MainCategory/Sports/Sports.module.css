@@ -9,7 +9,12 @@
     flex-direction: column;
     margin: 2rem;
 }
-
+.title h2{
+    text-align: center;
+    margin: 2rem;
+    font-size: 3rem;
+    }
+    
 /* shop */
 .artCard{
     display: flex;
@@ -61,3 +66,49 @@ width: 100%;
 .newsText{
     font-size: 1.5rem;
 }
+
+.NoNewsimg {
+    display: flex;
+   justify-content: center;
+   position: absolute;
+   top: 90%; 
+   left: 50%;
+   transform: translate(-50%, -50%);
+}
+
+.NoNewsimg img{
+    width: 80rem;
+    height: auto;
+    border-radius: 18rem;
+    overflow: hidden;
+}
+
+.NoNewsText {
+    text-align: center; 
+    color: white; 
+    position: relative; 
+    z-index: 1; 
+    padding: 20rem;
+}
+.NoNewsText h3{
+    color: black;
+    padding: 2.5rem;
+}
+    .NoNews{
+         font-size: 2rem;
+         padding-bottom: 2rem;
+        justify-content:space-around;
+        align-items: center;
+        min-height: 70vh;
+         background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        width: auto;
+        height: auto;
+    } 
+    .NoNewsBtn{
+        font-size: 2rem;
+        color: black;
+        cursor: pointer;
+        padding: 0.5rem;
+    }
