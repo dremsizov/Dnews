@@ -1,12 +1,7 @@
-
-
-.spenerContainer{
-    position: fixed;
-    z-index: 9999999;
-    background: #fff;
+ .spenerContainer{
     width: 100%;
     height: 100%;
-}
+} 
 
 .spiner{
     height: 100%;
@@ -17,8 +12,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
+} 
 
 .spiner img{
-    width: 280px;
+    width: 30rem;
+    height: 30rem;
 }

@@ -5,19 +5,21 @@ import {AuthContext} from "../../../contexts/AuthContext"
 
 import * as newsService from "../../../services/newsService"
 import NewsCardProfile from "../../NewsItemCards/NewsCardProfile/NewsCardProfile";
-
+import Spiner from "../../SPINER/Spiner";
 
 export default function Profile () {
     document.title = 'Профил';
-
+    const [spining, setSpining] = useState(false);
     const { auth } = useContext(AuthContext);
     const [NewsOwner, setNewsOwner] = useState([]);
 
 
     useEffect(() => {
+        setSpining(true);
         newsService.getOwnerNews(auth._id)
         .then((result) => setNewsOwner(result))
         .catch((error) => console.log(error.message))
+        .finally(()=> setSpining(false));      
     }, [auth]);
 
 
@@ -26,8 +28,8 @@ export default function Profile () {
         <>
         <section className={styles.wrapper}>
             <div className={styles.profilewrapper}>
-
-            
+            {spining && <Spiner />}
+                        
             <div className={styles.profileCardContainer}>
                 <div className={styles.profileImage}>
                     <img src="/assets/profile8.png" alt="" />
@@ -47,6 +49,8 @@ export default function Profile () {
                 <label htmlFor="">Потребителско име:</label>
                 <input type="text" value={auth.username} disabled/>
                 </div>
+
+                
                 {/* <div className={styles.buttons}>
             <button
               className={styles.createBtnEdit}
