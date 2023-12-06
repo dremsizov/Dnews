@@ -28,6 +28,8 @@ export default function Register() {
 
   const [formRegValues, setFormRegValues] = useState(regFormInitialState);
   const [errors, setErrors] = useState({});
+  const [hasServerError, setHasServerError] = useState(false);
+  const [serverError, setServerError] = useState({});
 
 
 
@@ -44,7 +46,10 @@ export default function Register() {
       setAuth(account)
       navigate('/news')
       })
-      .catch((error) => console.log(error.message))
+      .catch(error => {
+        setHasServerError(true);
+        setServerError(error.message);
+      });
 
     resetRegFormHandler();
   };
@@ -300,6 +305,10 @@ export default function Register() {
                       || (Object.values(values).some(x => x == '')))}>
                   Регистрирай се
                 </button>
+
+                {hasServerError && (
+                    <p className={styles.errorMessage}>{serverError}</p>
+                  )}
 
                 <div className={styles.loginNav}>
                   <p>
