@@ -1,8 +1,10 @@
+/* eslint-disable no-unused-vars */
 import styles from "../Politics/Politics.module.css"
 import { Link } from 'react-router-dom';
 
 import { useEffect, useState } from 'react';
 import * as newsService from '../../../services/newsService'
+import Spiner from "../../SPINER/Spiner";
 
 
 import NewsCard from "../../NewsItemCards/NewsCardCatalog/NewsItem";
@@ -12,11 +14,20 @@ export default function PoliticsNews(){
     document.title = 'Политика';
 
     const [politics, setPoliticsNews] = useState([]);
+    const [spining, setSpining] = useState(false);
+  const[hasServerError, setHasServerError]= useState(false);
+  const[serverError,setServerError]= useState({})
     
     useEffect(() => {
+        setSpining(true);
         newsService.getAllPolitics()
         .then(result => setPoliticsNews(result))
-        .catch(err => console.log(err))
+        .catch( error => {
+            setHasServerError(true);
+            setServerError(error.message)
+            console.log(error.message);
+          })
+          .finally(()=> setSpining(false)); 
     }, 
     [])
 
@@ -27,6 +38,10 @@ export default function PoliticsNews(){
         <h2>Политическите новини</h2>
 
             <div>
+            {spining && <Spiner />}
+            {hasServerError && (
+                        <p className={styles.serverError}>Грешка! </p>
+                    )}
                 {politics.length > 0
                 ? (
                     <>

@@ -35,7 +35,7 @@ export default function Home() {
     <>
     {spining && <Spiner />}
             {hasServerError && (
-                        <p className={styles.serverError}>Грешка!( </p>
+                        <p className={styles.serverError}>Грешка! </p>
                     )}
 
               {newsSeven.length >0 
