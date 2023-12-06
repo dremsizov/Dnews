@@ -23,10 +23,14 @@ export default function Login() {
 
   const [errors, setErrors] = useState({});
 
+  const [hasServerError, setHasServerError] = useState(false);
+  const [serverError, setServerError] = useState({});
+
 
 
   const resetFormHandler = () => {
     setFormValues(formInitialData);
+    setErrors({});
   };
 
   const submitHandler = (values) => {
@@ -37,7 +41,10 @@ export default function Login() {
         navigate("/");
 
        })
-      .catch((error) => console.log(error.message));
+       .catch(error => {
+        setHasServerError(true);
+        setServerError(error.message);
+      });
 
     resetFormHandler();
   };
@@ -165,6 +172,10 @@ export default function Login() {
                   >
                     Влез
                   </button>
+
+                  {hasServerError && (
+                    <p className={styles.serverError}>{serverError}</p>
+                  )}
 
                   <div className={styles.loginNav}>
                     <p>
