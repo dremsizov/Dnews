@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { Component } from 'react';
+import styles from "../GUARDS/ErrorBounding.module.css"
 
 
 export default class ErrorBoundary extends Component {
@@ -23,7 +24,7 @@ export default class ErrorBoundary extends Component {
         if (this.state.hasError) {
             return (
                 <>
-                <section >
+                <section className={styles.boundingErr}>
                     <div >
                         <h2>ГРЕШКА</h2>
                    <a href="/"><button >Върни се обратно</button></a>
