@@ -1179,7 +1179,7 @@
           }).length !== 0
         ) {
           throw new ConflictError$1(
-            `A user with the same ${identity} already exists`
+            ` ${identity}, който се опитвате да подадете вече се използва`
           );
         } else {
           const newUser = Object.assign({}, body, {
