@@ -45,7 +45,6 @@ export default function Login() {
         setHasServerError(true);
         setServerError(error.message);
       });
-
     resetFormHandler();
   };
 
