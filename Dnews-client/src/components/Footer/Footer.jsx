@@ -1,6 +1,7 @@
 import newsLogo from '../../../public/assets/logoMic.png'
 import styles from './Footer.module.css'
 
+import { Link } from 'react-router-dom';
 
 
 export default function FooterComponent() {
@@ -48,7 +49,7 @@ export default function FooterComponent() {
         </div>
           </div>
         </section>
-<p className={styles['author']}>Viktor Dremsizov, React 2023</p>
+<p className={styles['author']}> <Link to ="https://github.com/dremsizov">Viktor Dremsizov</Link>, React 2023</p>
       </footer>
     )
 }
