@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
 import styles from "../Edit_News/EditNews.module.css";
 
@@ -24,12 +25,19 @@ export default function EditNews() {
   const { newsID } = useParams();
   const [formEditValues, setFormEditValues] = useState(formEditInitialState);
   const [errors, setErrors] = useState({});
+  const [hasServerError, setHasServerError] = useState(false);
+  const [serverError, setServerError] = useState({});
 
   useEffect(() => {
     newsService
       .getOneNews(newsID)
       .then((result) => setFormEditValues(result))
-      .catch((err) => console.log(err));
+      .catch(err => {
+        console.log();
+        setHasServerError(true);
+        setServerError(err.message);
+        console.log(err.message);
+    })
   }, [newsID]);
 
   const handleChange = (e) => {
@@ -71,7 +79,12 @@ export default function EditNews() {
         navigate("/news");
       })
 
-      .catch((error) => console.log(error));
+      .catch(err => {
+        console.log();
+        setHasServerError(true);
+        setServerError(err.message);
+        console.log(err.message);
+    })
 
     resetCreateFormHandler();
   };
@@ -163,6 +176,9 @@ export default function EditNews() {
     <>
       <div className={styles.container}>
         <div className={styles.fornContainer}>
+        {hasServerError && (
+                    <p className={styles.serverError}>Грешка </p>
+                )}
           <form
             id="request"
             className={styles.form}
