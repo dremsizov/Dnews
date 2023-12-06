@@ -25,6 +25,8 @@ export default function HeaderComponent() {
       navigate("/");
     } catch (error) {
       console.log(error);
+      setAuth(null);
+      navigate('/login');
     }
   }
 
