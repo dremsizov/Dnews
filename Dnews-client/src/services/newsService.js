@@ -2,7 +2,7 @@ import * as request from '../services/apiService'
 
 const apiURL = "http://localhost:3030/data/news";
 
-const apiLikeUrl = "http://localhost:3030/data/likes"
+// const apiLikeUrl = "http://localhost:3030/data/likes"
 
 ////////////////////////////// GET ALL REQUEST ////////////////////////
 export const getAll = async () => {
@@ -159,38 +159,38 @@ export const getAllAnalitics = async () => {
 
 //  Likes
 
-export const likeNews = async (newsID) => {
-    const result = await request.post(apiLikeUrl, newsID);
+// export const likeNews = async (newsID) => {
+//     const result = await request.post(apiLikeUrl, newsID);
 
-    return result;
+//     return result;
 
-}
+// }
 
-export const likeForNews = async (newsID) => {
-    const result = await request.get(`${apiLikeUrl}?where=newsID%3D%22${newsID}%22&distinct=_ownerId&count`);
-    return result
-}
+// export const likeForNews = async (newsID) => {
+//     const result = await request.get(`${apiLikeUrl}?where=newsID%3D%22${newsID}%22&distinct=_ownerId&count`);
+//     return result
+// }
 
-export const canLike = async (newsID, userID) => {
-    const result = await request.get(`${apiLikeUrl}?where=newsID%3D%22${newsID}%22%20and%20_ownerId%3D%22${userID}%22&count`);
-    return result
-}
-
-
+// export const canLike = async (newsID, userID) => {
+//     const result = await request.get(`${apiLikeUrl}?where=newsID%3D%22${newsID}%22%20and%20_ownerId%3D%22${userID}%22&count`);
+//     return result
+// }
 
 
-export const like = async (userID, newsID) => {
-    const result = await request.post(`${apiLikeUrl}`,userID, newsID);
-    return result
-}
 
 
-export const getAllLikes = async () => {
+// export const like = async (userID, newsID) => {
+//     const result = await request.post(`${apiLikeUrl}`,userID, newsID);
+//     return result
+// }
+
+
+// export const getAllLikes = async () => {
   
-    const result = await request.get(apiLikeUrl);
+//     const result = await request.get(apiLikeUrl);
   
-    const data = Object.values(result);
+//     const data = Object.values(result);
   
-    return data;
-  };
+//     return data;
+//   };
 
