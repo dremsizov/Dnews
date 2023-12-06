@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState } from "react";
 import styles from "../CREATE-NEWS/CreateNews.module.css";
 
@@ -25,6 +26,8 @@ export default function CreateNews() {
     formCreateInitialState
   );
   const [errors, setErrors] = useState({});
+  const [hasServerError, setHasServerError] = useState(false);
+  const [serverError, setServerError] = useState({});
 
 
   const handleChange = (e) => {
@@ -58,7 +61,12 @@ export default function CreateNews() {
         navigate("/news");
       })
 
-      .catch((error) => console.log(error));
+      .catch(err => {
+        console.log();
+        setHasServerError(true);
+        setServerError(err.message);
+        console.log(err.message);
+    });
 
     resetCreateFormHandler();
   };
@@ -353,6 +361,9 @@ export default function CreateNews() {
               </button>
             </Link>
           </div>
+          {hasServerError && (
+           <p className={styles.serverError}>Грешка</p>
+            )}
         </form>
         </div>
 
