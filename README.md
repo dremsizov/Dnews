@@ -1,6 +1,7 @@
 # Dnews - This is a web-site for news!
-This is my first React project. This is a news app.
+Hey there! If you're reading this, that means you've opened my first React project. The name I've given to my project is Dnews. If you're wondering what my project is all about – it's a news app where users can read the latest articles. All the articles on the site are written by journalists. Currently, since this project is for learning purposes, anyone with a registration can create news articles.
 
+# App Structure
 
 This is my APP structure
 
