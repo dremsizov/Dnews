@@ -33,17 +33,19 @@ export default function AnaliticsNews(){
 
     return(
         <>
+
+        <div className={styles.pageWrapper}>
+
         <div className={styles.title}>
 
         <h2>Твоето място за анализи и коментари!</h2>
+            </div>
 
-            <div>
+            <div className={styles.workingSpace}>
             {spining && <Spiner />}
             {hasServerError && (
                         <p className={styles.serverError}>Грешка! </p>
                     )}
-
-
                 {analitics.length > 0
                 ? (
                     <>
@@ -51,18 +53,13 @@ export default function AnaliticsNews(){
                         analitics.map(newsCard => (
                             <NewsCard key={newsCard._id}
                                 {...newsCard}
-                                />
-
-
-                        ))
-                    }
+                                />                                                                
+                                ))
+                            }
                     </>
                 )
                 :
                 <div className={styles.NoNews}>
-                <div className={styles.NoNewsimg}>
-                    <img src="../../../public/assets/machine.jpg" />
-                </div>
                 <div className={styles.NoNewsText}>
                 <h3>Все още нямаме новини в тази категория!</h3>
                     <Link to="/createNews">
@@ -72,10 +69,10 @@ export default function AnaliticsNews(){
                 </div>
                 </div>
  
-               
+ 
 }
             </div>
-        </div>
+ </div>
         </>
     )
 }

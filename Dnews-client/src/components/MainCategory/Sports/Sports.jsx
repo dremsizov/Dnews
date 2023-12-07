@@ -31,11 +31,13 @@ export default function SportsNews(){
 
     return(
         <>
+           <div className={styles.pageWrapper}>
+
         <div className={styles.title}>
 
         <h2>В ритъма на спортните новини</h2>
 
-            <div>
+            <div className={styles.workingSpace}>
             {spining && <Spiner />}
             {hasServerError && (
                         <p className={styles.serverError}>Грешка! </p>
@@ -56,10 +58,7 @@ export default function SportsNews(){
                 )
                 :
                 <div className={styles.NoNews}>
-                <div className={styles.NoNewsimg}>
-                    <img src="../../../public/assets/machine.jpg" />
-                </div>
-                <div className={styles.NoNewsText}>
+                   <div className={styles.NoNewsText}>
                 <h3>Все още нямаме новини в тази категория!</h3>
                     <Link to="/createNews">
                 <button className={styles.NoNewsBtn}>Създай 
@@ -70,6 +69,7 @@ export default function SportsNews(){
 }
             </div>
         </div>
+                    </div>
         </>
     )
 }
