@@ -187,3 +187,9 @@ If you don't have time here you can see how the web-site looks. There are some s
 
 
 ![search](https://github.com/dremsizov/Dnews/assets/106909276/001b4898-2628-4a89-8798-dba03cce4a72)
+
+
+### Not Found 
+
+![Screenshot 2023-12-08 at 15 04 57](https://github.com/dremsizov/Dnews/assets/106909276/7dd04fc6-3f2b-4e04-a06b-6b97d23457db)
+
