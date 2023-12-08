@@ -80,11 +80,10 @@ set User 2:
 # Security
 
 The project incorporates several security enhancements:
-
-    - The application requires the user to be authenticated to take advantage of the full functionalities
-    - Guards: By utilizing public and private guards effectively, an application can ensure a balance between providing necessary information publicly while safeguarding sensitive functionalities and data
-   -  404 Page: An exclusive 404 page is implemented to handle undefined routes gracefully
-   -  Error boundary: catch JavaScript errors anywhere in the child component tree, log those errors, and display a fallback UI instead of crashing the whole app
+- The application requires the user to be authenticated to take advantage of the full functionalities
+- Guards: By utilizing public and private guards effectively, an application can ensure a balance between providing necessary information publicly while safeguarding sensitive functionalities and data
+-  404 Page: An exclusive 404 page is implemented to handle undefined routes gracefully
+-  Error boundary: catch JavaScript errors anywhere in the child component tree, log those errors, and display a fallback UI instead of crashing the whole app
 
         
 # Deployment
