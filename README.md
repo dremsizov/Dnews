@@ -1,6 +1,26 @@
 # Dnews - This is a web-site for news!
 Hey there! If you're reading this, that means you've opened my first React project. The name I've given to my project is Dnews. If you're wondering what my project is all about – it's a news app where users can read the latest articles. All the articles on the site are written by journalists. Currently, since this project is for learning purposes, anyone with a registration can create news articles.
 
+
+# Deployment
+
+- The application is successfully deployed.
+  
+   **DEMO**  - https://dnewsbg.vercel.app/
+
+Link to repository - https://github.com/dremsizov/Dnews---
+
+  **For Deploy I Used:**
+  
+  Vercel for the frontend deployment.
+  Render for the backend deployment.
+        
+   **For test you can use:**
+  
+   username: vito@abv.bg
+   pass: 123456
+
+
 ## App Structure and Architecture
 
 This is my APP structure
@@ -10,22 +30,17 @@ This is my APP structure
 
 ### Use/ install the app Local
 
-1. Clone ot Dowload the repository to your local machine
- 
-2. Open the App in VSC
-       **First start the server**
-  - open the terminal
-  Navigate to the server folder to start the server (cd .\server)
-- Start the server
-      write (node ./server.js) command to start the back-end
-* You should see the info: Server started on port 3030. You can make requests to http://localhost:3030/
-       **Second start the react App - frontend**
-       - open the terminal
-  Navigate to the client folder (cd .\client)
-  Now you should write in terminal:
-       - npm install - command for install all packages and dependencies
-       - npm run dev - to start the development server and run the app
-       - open your browser and go to http://localhost:5173 to access the application
+- Clone or download the repository to your local machine.
+- Open the app in Visual Studio Code.
+- Start the server:
+   - Navigate to the server folder (cd .\server)
+   - Run `node ./server.js` to start the backend.
+- Start the React app (frontend):
+   - Navigate to the client folder (cd .\client)
+   - Run `npm install` to install dependencies.
+   - Run `npm run dev` to start the development server and run the app.
+   - Open your browser and go to http://localhost:5173 to access the application.
+
 
 ### Starting the APP
         For a quick exploration, you can use the following demo accounts:
