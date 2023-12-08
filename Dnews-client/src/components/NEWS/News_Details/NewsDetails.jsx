@@ -204,7 +204,7 @@ if (auth) {
         {/* Last News */}
         <div className={styles.lastTreeWrapper}>
           <div className={styles.lastTreetitle}>
-            <h3>Нашите послени новини </h3>
+            <h3>Нашите последни новини </h3>
           </div>
           <div className={styles.lastTreeContainer}>
             {newsTree.map((newsCard) => (
