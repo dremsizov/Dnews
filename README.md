@@ -1,6 +1,26 @@
 # Dnews - This is a web-site for news!
 Hey there! If you're reading this, that means you've opened my first React project. The name I've given to my project is Dnews. If you're wondering what my project is all about – it's a news app where users can read the latest articles. All the articles on the site are written by journalists. Currently, since this project is for learning purposes, anyone with a registration can create news articles.
 
+
+# Deployment
+
+- The application is successfully deployed.
+  
+   **DEMO**  - https://dnewsbg.vercel.app/
+
+Link to repository - https://github.com/dremsizov/Dnews---
+
+  **For Deploy I Used:**
+  
+  Vercel for the frontend deployment.
+  Render for the backend deployment.
+        
+   **For test you can use:**
+  
+   username: vito@abv.bg
+   pass: 123456
+
+
 ## App Structure and Architecture
 
 This is my APP structure
